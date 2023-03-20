@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block script %}
+<script>
+    window.onload = downloadContent('/api/get-courses', false, null, false, false);
+    window.onload = setInterval(downloadContent, 9420, '/api/get-courses', false, null, false, false)
+</script>
+{% endblock %}

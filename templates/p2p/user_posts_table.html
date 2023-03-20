@@ -1,0 +1,36 @@
+<div class="table dynamic">
+    <div class="th">
+        <div class="tc">
+            <span>Валюта</span>
+        </div>
+        <div class="tc">
+            <div class="tc-left">
+                <span>Цена</span>
+            </div>
+            <div class="tc-right">
+                <span>Лимит</span>
+            </div>
+        </div>
+        <div class="tc">
+            <span>Банк</span>
+        </div>
+    </div>
+    {% for post in posts %}
+        <div class="tr" onclick="downloadContent('/api/get-post-info/{{ section }}/{{ post.id }}')">
+            <div class="tc">
+                <span>{{ post.currency }}</span>
+            </div>
+            <div class="tc">
+                <div class="tc-left">
+                    <span>{{ post.price }}</span>
+                </div>
+                <div class="tc-right">
+                    <span>{{ post.limit }}</span>
+                </div>
+            </div>
+            <div class="tc">
+                <span>{{ post.get_bank_display }}</span>
+            </div>
+        </div>
+    {% endfor %}
+</div>

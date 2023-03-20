@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/static/css/style.css">
+        <link rel="stylesheet" href="/static/css/header.css">
+        <link rel="stylesheet" href="/static/css/modal.css">
+        <script src="/static/js/front.js"></script>
+        <script src="/static/js/modal.js"></script>
+        <script src="/static/js/p2p.js"></script>
+        <link rel="stylesheet" href="/static/css/p2p.css">
+        <link rel="stylesheet" href="/static/css/messages.css">
+        <link rel="stylesheet" href="/static/css/users.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        {% block include %}{% endblock %}
+    </head>
+    <body>
+        <header>
+            <img id="header-logo" src="/static/img/logo.svg" style="position: absolute; left: 5%; top: 15px; height: 50px; width: 50px;">
+            <input id="toggle" onchange="mainMenuChange()" type="checkbox"></input>
+            <label for="toggle" class="hamburger">
+                <div class="top-bun"></div>
+                <div class="meat"></div>
+                <div class="bottom-bun"></div>
+            </label>
+            <div id="main-nav-wrapper">
+                <nav id="main-nav">
+                    <a href="\courses" class="endpoint mobile-menu-link {% if section == 'courses' %}active{% endif %}">Курсы валют</a><br>
+                    <a id="p2p-menu-btn" data-submenu="#p2p-nav-wrapper" onclick="menuView(this)" class="submenu-toggle mobile-menu-link closed {% if section == 'p2p' %}active{% endif %}">P2P торговля</a>
+                    <div id="p2p-nav-wrapper"  style="height: 0px;" class="submenu">
+                        <nav id="p2p-nav" class="submenu-nav">
+                            <a id="mobile-p2p-buy-button" {% if section == 'p2p' %} onclick="downloadContent('/api/get-sell-list/all')" {% else %} href="/p2p/sell" {% endif %} class="endpoint">Купить</a><br>
+                            <a id="mobile-p2p-sell-button" {% if section == 'p2p' %} onclick="downloadContent('/api/get-buy-list/all')" {% else %} href="/p2p/buy" {% endif %} class="endpoint">Продать</a><br>
+                            <a id="mobile-p2p-my-posts-button" {% if section == 'p2p' %} onclick="downloadContent('/api/get-posts-list/buy')" {% else %} href="/p2p/my-posts" {% endif %} class="endpoint">Мои объявления</a><br>
+                            <a id="mobile-p2p-my-orders-button"{% if section == 'p2p' %} onclick="downloadContent('/api/get-orders-list')" {% else %} href="/p2p/my-orders" {% endif %} class="endpoint">Мои ордера</a><br>
+                        </nav>
+                    </div>
+                    <a href="#" id="nft-menu-btn" class="submenu-toggle mobile-menu-link closed {% if section == 'nft' %}active{% endif %}" data-submenu="#nft-nav-wrapper" onclick="menuView(this)">NFT торговля</a>
+                    <div id="nft-nav-wrapper" style="height: 0px;" class="submenu">
+                        <nav id="nft-nav" class="submenu-nav">
+                            <a href="\p2p\buy">Маркетплейс</a><br>
+                            <a href="\p2p\buy">Коллекции</a><br>
+                            <a href="\p2p\buy">Мои NFT</a><br>
+                        </nav>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <div id="main" style="z-index: -10;">
+            {% block content %}
+            {% endblock %}
+        </div>
+        {% block modal %}
+        {% endblock %}
+    </body>
+    {% if user.is_authenticated %}
+    <script>
+        window.onload = getBalance()
+        window.onload = setInterval(getBalance, 5213)
+    </script>
+    {% endif %}
+</html>
+{% block script %}
+{% endblock %}

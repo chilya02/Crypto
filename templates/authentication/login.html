@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="form-container">
+        <form method="post" class="auth-form">
+            {% csrf_token %}
+            {{ form }}
+            <label for="id_auth" style="visibility: hidden;">|</label>
+            <button type="submit" class="blue-btn disabled"required id="id_auth">Войти</button>
+            <label for="to-register" style="visibility: hidden;">|</label>
+            <a id="to-register" href="/users/register">Хотите зарегистрироваться?</a>
+        </form>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        window.onload = function(){
+            let form = document.querySelector('.auth-form');
+            form.onsubmit = SendForm;
+        }
+        async function SendForm(e)
+            {
+                e.preventDefault();
+
+                let form = document.querySelector('.auth-form');
+                let response = await fetch('', {
+                    method: 'POST',          // метод POST
+                    headers:{
+                        "X-CSRFToken": getCookie("csrftoken"),
+                    },
+                    body: new FormData(form) // в класс FormData передаем ссылку на форму
+                });
+
+                // получаем JSON
+                let result = await response.json();
+
+                if (result['success']){
+                    window.location.href = '/'
+                }
+                else {
+                    
+                    for (let element of document.querySelectorAll('.auth-error')){
+                        element.remove()
+                    } 
+                    let p = document.createElement('p');
+                    p.innerHTML = 'Неправильный email или пароль';
+                    p.classList.add('auth-error')
+                    let target = document.getElementById('id_auth');
+                    target.insertAdjacentElement('beforeBegin', p);
+                }
+
+                console.log(result);
+            };
+    </script>
+{% endblock %}

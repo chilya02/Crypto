@@ -1,0 +1,56 @@
+.form-input{
+    width: calc(100% - 16px);
+    height: 34px;
+}
+.form-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+#id_auth, #id_register{
+    width: 250px;
+}
+.auth-form {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+}
+/* label {
+    font-family: 'Roboto Flex';
+    font-style: normal;
+    margin: 8px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 19px;
+    color: #0D58A6;
+    text-align: center;
+    align-self: flex-start;
+} */
+
+#to-register{
+    text-decoration: none;
+    font-family: 'Roboto Flex';
+    font-style: normal;
+    padding-top: 2px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 19px;
+    text-align: center;
+    color: #0D58A6;
+ }
+
+.auth-error{
+    font-family: 'Roboto Flex';
+    font-style: normal;
+    margin: 2px;
+    padding: 2px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FF1300;
+    word-wrap:break-word;
+}

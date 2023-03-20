@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div id="p2p-content">
+        <div id="post-info" style="width: 90%; margin-top: 30px; display: flex; justify-content: space-between;">
+            <div id="post-info-data">
+                <h1 style="text-align: left;">Личные данные</h1>
+                <div class="post-info-row">
+                    <span class="info-name">
+                        Имя
+                    </span>
+                    <span class="info-text">
+                        {{ user.username }}
+                    </span>
+                </div>
+                <div class="post-info-row">
+                    <span class="info-name">
+                        Email
+                    </span>
+                    <span class="info-text">
+                        {{ user.email }}
+                    </span>
+                </div>
+            </div>
+            <div id="post-info-actions">
+                <h1 style="text-align: left;">Данные о валютах</h1>
+                {% for currency in currencies %}
+                    <div class="post-info-row">
+                        <span class="info-name">
+                            {{ currency.name }}
+                        </span>
+                        <span class="info-text">
+                            {{ currency.value }}
+                        </span>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <div class="placeholder"></div>
+        </div>
+    </div>
+{% endblock %}

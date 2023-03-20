@@ -1,0 +1,6 @@
+{% extends 'p2p/p2p_template.html' %}
+{% block script %}
+<script>
+    window.onload = downloadContent('/api/get-post-info/{{ post_section }}/{{ id }}');
+</script>
+{% endblock %}

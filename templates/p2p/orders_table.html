@@ -1,0 +1,42 @@
+<div class="table dynamic">
+    <div class="th">
+        <div class="tc">
+            <span>Клиент/валюта</span>
+        </div>
+        <div class="tc">
+            <div class="tc-left">
+                <span>Цена</span>
+            </div>
+            <div class="tc-right">
+                <span>Количество</span>
+            </div>
+        </div>
+        <div class="tc">
+            <div class="tc-left">
+                <span>Сумма</span>
+            </div>
+            <div class="tc-right">
+                <span>Тип операции</span>
+            </div>
+        </div>
+    </div>
+    {% for order in orders %}
+        <div class="tr{% if post.user == user %} my{% endif %}" onclick="downloadContent('/api/get-post-info/{{ section }}/{{ post.id }}')">
+            <div class="tc with-info">
+                <span>{{ order. }}</span>
+                <span class="info">{{ post.currency }}</span>
+            </div>
+            <div class="tc">
+                <div class="tc-left">
+                    <span>{{ post.price }}</span>
+                </div>
+                <div class="tc-right">
+                    <span>{{ post.limit }}</span>
+                </div>
+            </div>
+            <div class="tc">
+                <span>{{ post.get_bank_display }}</span>
+            </div>
+        </div>
+    {% endfor %}
+</div>

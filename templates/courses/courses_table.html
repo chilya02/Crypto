@@ -1,0 +1,46 @@
+<div class="table">
+    <div class="th">
+        <div class="tc">
+            <span>Название</span>
+        </div>
+        <div class="tc">
+            <div class="tc-left">
+                <span>Цена</span>
+            </div>
+            <div class="tc-right">
+                <span>Изменение</span>
+            </div>
+        </div>
+        <div class="tc">
+            <div class="tc-left">
+                <span>Объём</span>
+            </div>
+            <div class="tc-right">
+                <span>Капитализация</span>
+            </div>
+        </div>
+    </div>
+    {% for course in courses %}
+    <div class="tr">
+        <div class="tc">
+            <span style="font-size: 20px;">{{ course.currency }}</span>
+        </div>
+        <div class="tc">
+            <div class="tc-left">
+                <span>{{ course.RUB }}</span>
+            </div>
+            <div class="tc-right">
+                <span style="color: {% if course.change > 0 %}#0ECB81 {% else %}#F6465D{% endif %}">{{ course.change }}</span>
+            </div>
+        </div>
+        <div class="tc">
+            <div class="tc-left">
+                <span>{{ course.volume }}</span>
+            </div>
+            <div class="tc-right">
+                <span>{{ course.quote_volume }}</span>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>

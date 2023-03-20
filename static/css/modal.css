@@ -1,0 +1,140 @@
+.dlg-modal {
+	opacity: 0;
+	visibility: hidden;
+	text-align: center;
+	position: fixed;
+	z-index: 10;
+	padding: 35px;
+	background: #ffffff;
+	border-radius: 30px;
+	box-shadow: 0 0 20px rgba(0,0,0,0.85);
+	top: 10vh;
+    right: calc(50vw - 200px);
+    width: 400px;
+    height: auto;
+    max-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.dlg-modal-slide-top {
+	top: -20px;
+	/*transform: translate(-50%, -100%);*/
+	visibility: visible;
+	opacity: 1;
+}
+.dlg-modal-slide-right {
+	right: -20px;
+	/*transform: translate(-50%, -100%);*/
+	visibility: visible;
+	opacity: 1;
+}
+.overlay { 
+	opacity: 0; 
+	visibility: hidden; 
+	position:fixed; 
+	left: 0; 
+	right: 0; 
+	top: 0;
+	bottom: 0;
+	z-index: 5; 
+	background: rgba(0,0,0,0.87); 
+}
+.closer, .overlay {
+	-webkit-transition: all 0.3s ease;
+	transition: all 0.3s ease; 
+}
+.closer {
+	width: 40px; 
+	height: 40px; 
+	display: block; 
+	position: absolute; 
+	right: 20px; 
+	top: 20px; 
+	background: url('../img/cross.png') no-repeat;
+	cursor: pointer; 
+}
+.closer:hover {
+	-webkit-transform: rotate(90deg);
+	 transform: rotate(90deg); 
+}
+.fadeIn, .fadeOut, .slideInDown, .slideOutUp .slideInRight .slideOutLeft {
+	animation-duration: 0.4s;
+	animation-timing-function: ease;
+}
+@keyframes fadeIn { 
+	from {
+		opacity: 0;
+		visibility: hidden;
+	}
+	to { 
+		opacity:1;
+		visibility: visible; 
+	}
+}
+.fadeIn {
+	animation-name: fadeIn;
+	opacity: 1;
+	visibility: visible;
+}
+@keyframes fadeOut { 
+	from {
+		opacity: 1;
+		visibility: visible;
+	}
+	to {
+		opacity:0;
+		visibility: hidden;
+	}
+}
+.fadeOut {
+	animation-name: fadeOut;
+	opacity: 0;
+	visibility: hidden;
+}
+@keyframes slideInDown { 
+	from {
+		top: -20px;
+		
+	}
+	to {
+		top: 50%;
+
+	}
+}
+@keyframes slideInRight { 
+	from {
+		right: -20px;
+		
+	}
+	to {
+		right: 10px;
+
+	}
+}
+.slideInRight {
+	animation-name: slideInRight;
+	right: 10px;
+}
+.slideInDown {
+	animation-name: slideInDown;
+	top: 50%;
+}
+@keyframes slideOutUp { 
+	from {
+		top: 50%;
+	}
+	to {
+		top: -20px;
+	}
+}
+.slideOutUp { animation-name: slideOutUp; }
+@keyframes slideOutLeft { 
+	from {
+		right: 20px;
+	}
+	to {
+		right: -20px;
+	}
+}
+.slideOutLeft { animation-name: slideOutLeft; }

@@ -1,0 +1,137 @@
+body {
+    color: #6ecddd;
+    font-family: 'Roboto Flex';
+    font-size: 1vw;
+    text-align: center;
+    width: 100vw;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+    z-index: 0;
+    margin-top: 80px;
+
+}
+#main{
+    padding: 6%;
+    padding-top: 40px;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;  
+  }
+  .table{
+    width: 100%;
+    font-size: 16px;
+  }
+  .th, .tr{
+    display: flex;
+    width: 100%;
+  }
+  .th{
+    height: 45px;
+    background: #689CD2;
+    border-radius: 30px 30px 0px 0px;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    color: #fff;
+  }
+  .tr{
+    border-bottom: 1px solid #4188D2;;
+    height: 60px;
+    color: #000;
+  }
+  .tc-left, .tc-right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .tc{
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+    align-items: center;
+  }
+  .tc.la{
+    align-items: start;
+    justify-content: center;
+    padding-left: 30px;
+    width: calc(30% - 30px);
+  }
+  .tc.with-info{
+    display: flex;
+    flex-direction: column;
+  }
+  .tc.with-info .info{
+    color: #797979;
+    font-size: 14px;
+  }
+  .tc-left, .tc-right{
+    width: 50%;
+    height: 100%;
+  } 
+  .table.dynamic .tr:hover{
+    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.30), -2px 0px 10px rgba(0, 0, 0, 0.30);
+      transform: scale(1.01);
+      transition: all 200ms ease;
+  }
+  @media (max-width:520px){
+    #main{
+      width: 95%;
+      padding: 2.5%;
+      padding-top: 40px;
+    }
+    .tc{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 33%;
+    }
+    .tc-left::after{
+      content: "/";
+    }
+    .tc-left, .tc-right{
+      width: 100%;
+      height: 50%;
+    
+    }
+    .tc-left{
+      align-items: end;
+    }
+    .tc-right{
+      align-items: start;
+    }
+    #p2p-menu{
+      display: none;
+    }
+    #p2p-content{
+      padding: 0;
+    }
+  }
+.tr.my{
+  background-color: #FFA273;
+}
+
+/* button{
+    cursor: pointer;
+}
+button:hover{
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.30);
+    transform: scale(1.05);
+    transition: all 200ms ease;
+}
+button:not(:hover){
+    transition: all 200ms ease;
+}*/
+
+input{
+    background: #D9D9D9;
+    border: 3px solid #689CD2;
+    border-radius: 30px;
+    padding-left: 20px;
+}
+.disabled{
+    opacity: 30%;
+    pointer-events: none;
+} 
+

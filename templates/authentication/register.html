@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="form-container">
+        <form method="post" class="auth-form">
+            {% csrf_token %}
+            {{ form }}
+            <label for="id_register" style="visibility: hidden;">|</label>
+            <button type="submit" class="blue-btn" required id="id_register">Регистрация</button>
+        </form>
+
+</div>
+{% endblock %}
+
+{% block script %}
+    <script>
+
+        function showMessages(result){
+            let errors = result['errors']; 
+            console.log(errors);
+            let nowErrors = document.querySelectorAll('.auth-error');
+            for (let element of nowErrors){
+                element.remove();
+            }
+            for (let name in errors){
+                for (let index = 0; index < errors[name].length; index++){
+                    let p = document.createElement('p');
+                    p.innerHTML = errors[name][index]['message'];
+                    p.classList.add('auth-error')
+                    let target = document.querySelector(`[name=${name}]`);
+                    target.insertAdjacentElement('afterEnd', p);
+                }
+            }
+        }
+
+        async function SendForm(e){
+            e.preventDefault();
+
+            let form = document.querySelector('.auth-form');
+            let response = await fetch('', {
+                method: 'POST',          // метод POST
+                headers:{
+                    "X-CSRFToken": getCookie("csrftoken"),
+                },
+                body: new FormData(form) // в класс FormData передаем ссылку на форму
+            });
+
+            // получаем JSON
+            let result = await response.json();
+
+            if (result['success']){
+                window.location.href = '/'
+            } else{
+                showMessages(result)
+            }
+
+            console.log(result);
+        }
+
+
+        window.onload = function() {
+            let form = document.querySelector('.auth-form');
+            form.onsubmit = SendForm;
+        };
+
+    </script>
+{% endblock %}

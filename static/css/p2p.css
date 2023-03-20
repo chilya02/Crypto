@@ -1,0 +1,239 @@
+#p2p-menu{
+    text-align: left;
+    width: 15%;
+    min-width: 150px;
+    max-width: 200px;
+    font-family: 'Roboto Flex';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    color: #000000;
+}
+#p2p-menu .title{
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.p2p-menu-row{
+    cursor: pointer;
+    height: 35px;
+    margin: 0;
+    padding: 0;
+    padding-left: 5%;
+    display: flex;
+    align-items: center;
+    font-family: 'Roboto Flex';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+    color: #797979;
+    fill: #797979;
+}
+.p2p-menu-row.active{
+    fill: #4188D2;
+    color: #4188D2;
+    background-color: #D9D9D9;
+}
+.p2p-menu-row:hover{
+    background-color: #D9D9D9;
+}
+#p2p-menu #add-post-btn{
+    margin-top: 10px;
+    width: 100%;
+    height: 60px;
+    background: #4188D2;
+    border-width: 0;
+    border-radius: 30px;
+    font-family: 'Roboto Flex';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    color: #FFFFFF;
+}
+.p2p-menu-row svg{
+    height: 15px;
+    width: 15px;
+    margin-right: 8%;
+}
+#p2p-content{
+    padding-left: 5%;
+    padding-top: 30px;
+    width: 100%;
+}
+@media (max-width: 520px){
+    #p2p-content{
+        padding-left: 0;
+        padding-top: 0;
+    }
+}
+.top-menu{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 5px;
+
+}
+.top-menu-btn{
+    cursor: pointer;
+    font-family: 'Roboto Flex';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    color: #797979;
+}
+.top-menu-btn:hover{
+    color:#000000;
+    transform: scale(1.05);
+    transition: all 100ms ease;
+}
+.top-menu-btn:not(:hover){
+    transition: all 100ms ease;
+}
+.top-menu-btn.active{
+    color:#000000;
+    border-bottom: 2px solid #0D58A6;;
+}
+#cur-menu{
+    padding-left: 30px;
+    width: calc(100% - 60px);
+    max-width: 400px;
+    padding-right: 30px;
+}
+#post-menu{
+    padding-left: 30px;
+    width: 40%;
+    max-width: 200px;
+    min-width: 180px;
+}
+.delete-post-btn{
+    background: #FF5600;
+}
+#post-info{
+    display: flex;
+    width: 100%;
+    min-width: 450px;
+    justify-content: space-between;
+}
+.post-info-row input, .new-post-info-row input, .order-info-row input{
+    max-width: 310px;
+    height: 34px;
+}
+.card-number::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+#post-info .placeholder{
+    width: 280px;
+}
+.post-info-row, .new-post-info-row, .order-info-row{
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.info-name{
+    font-family: 'Roboto Flex';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    color: #689CD2;
+}
+.info-text{
+    font-family: 'Roboto Flex';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 42px;
+    color: #000000;
+}
+.order-info-row{
+    width: calc(90% - 5px);
+}
+#new-post-menu{
+    width: 80%;
+}
+.modal-info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 340px;
+    max-height: calc(100vh - 214px);
+    overflow-y: scroll;
+}
+.modal-info::-webkit-scrollbar {
+    width: 5px;
+    right: 10px;
+}
+.modal-info::-webkit-scrollbar-track {
+    background: white;
+}
+.modal-info::-webkit-scrollbar-thumb {
+    background-color: #689CD2;
+    border-radius: 4px;
+}
+.new-post-info-row {
+    width: calc(100% - 5px);
+}
+.new-post-info-row.moving {
+    overflow: hidden;
+    transition: all 100ms ease;
+}
+.new-post-info-row select{
+    padding: 1px;
+    background: #D9D9D9;
+    border: 3px solid #689CD2;
+    border-radius: 30px;
+    padding-left: 20px;
+    width: 100%;
+    height: 42px;
+    font-family: 'Roboto Flex';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 30px;
+    color: #000000;
+}
+.new-post-info-row input, .order-info-row input{
+    width: calc(100% - 27px);
+}
+#add-new-post-btn{
+    width: 210px;
+    height: 60px;
+    align-self: center;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+}
+#pay-info{
+    align-items: center;
+}
+#pay-btn, #save-btn, #approve-btn{
+    align-self: center;
+}
+button{
+    border-radius: 30px;
+    border: 0;
+    height: 60px;
+    width: 210px;
+    font-family: 'Roboto Flex';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 42px;
+    text-align: center;
+}
+.blue-btn{
+    background: #4188D2;
+    font-size: 32px;
+    line-height: 38px;
+    color: #FFFFFF;
+}
+.red-btn{
+    background: #FF5600;
+    color: #FFFFFF;
+}

@@ -1,0 +1,126 @@
+.message-interface-box{
+    height: 55vh;
+    min-height: 400px;
+    width: 25%;
+    max-width: 350px;
+    min-width: 280px;
+}
+#message-box{
+    position: fixed;
+    right: 3vw;
+    bottom: 2vh;
+    
+    transition: all 100ms ease;
+}
+.message-box-interface-title{
+    height: 10%;
+    width: 100%;
+    background: #689CD2;
+    border-radius: 30px 30px 0px 0px;
+    font-family: 'Roboto Flex';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#message-box-title{
+    transition: all 100ms ease;
+}
+#message-box-title.closed{
+    height: 100%;
+    transition: all 100ms ease;
+}
+#message-box-title:hover{
+    cursor: pointer;
+}
+#message-box.closed{
+    height: 5.5vh;
+    transition: all 100ms ease;
+    min-height: 40px;
+}
+.message-box-interface-body{
+    height: 90%;
+    width: 100%;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 0px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    
+}
+#message-box-body{
+    justify-content: end;
+}
+#message-box-body.closed{
+    visibility: hidden;
+}
+#message-input-area{
+    width: calc(100% - 40px);
+    padding: 20px;
+    padding-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    fill: #689CD2;
+}
+#message-input-area svg.disabled{
+    opacity: 50%;
+    pointer-events: none;
+}
+#new-message-field{
+    border: 1px solid #689CD2;
+    background: #D9D9D9;
+    width: calc(100% - 35px);
+}
+.message-box-content{
+    padding: 15px;
+    padding-top: 0;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+#messages{
+    padding-top: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #689CD2;
+}
+#message-box.hidden{
+    display: none;
+}
+.message-box-content::-webkit-scrollbar {
+    width: 5px;
+}
+.message-box-content::-webkit-scrollbar-track {
+    background: white;
+}
+.message-box-content::-webkit-scrollbar-thumb {
+    background-color: #689CD2;
+    border-radius: 4px;
+}
+.message{
+    font-family: 'Roboto Flex';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+
+    color: #FFFFFF;
+    word-wrap:break-word;
+    margin: 5px 0;
+    padding: 10px;
+    background: #689CD2;
+    border-radius: 10px;
+    width: fit-content;
+    max-width: 80%;
+}
+.message-from{
+    align-self: flex-end;
+}
+.message-to{
+    align-self: flex-start;
+}
