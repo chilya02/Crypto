@@ -16,7 +16,10 @@
     </head>
     <body>
         <header>
-            <img id="header-logo" src="/static/img/logo.svg" style="position: absolute; left: 5%; top: 15px; height: 50px; width: 50px;">
+            <div id="header-left-panel">
+                <img id="header-logo" src="/static/img/logo.svg">
+                <span id="header-name">БИРЖА</span>
+            </div>
             <input id="toggle" onchange="mainMenuChange()" type="checkbox"></input>
             <label for="toggle" class="hamburger">
                 <div class="top-bun"></div>
@@ -25,7 +28,7 @@
             </label>
             <div id="main-nav-wrapper">
                 <nav id="main-nav">
-                    <a href="\courses" class="endpoint mobile-menu-link {% if section == 'courses' %}active{% endif %}">Курсы валют</a><br>
+                    <a href="\courses" class="endpoint mobile-menu-link {% if section == 'courses' %}active{% endif %}">Курсы валют</a>
                     <a id="p2p-menu-btn" data-submenu="#p2p-nav-wrapper" onclick="menuView(this)" class="submenu-toggle mobile-menu-link closed {% if section == 'p2p' %}active{% endif %}">P2P торговля</a>
                     <div id="p2p-nav-wrapper"  style="height: 0px;" class="submenu">
                         <nav id="p2p-nav" class="submenu-nav">
@@ -44,6 +47,11 @@
                         </nav>
                     </div>
                 </nav>
+            </div>
+            <div id="header-right-panel">
+                <div id="header-login-button">
+                    <span>Войти</span>
+                </div>
             </div>
         </header>
         <div id="main" style="z-index: -10;">
