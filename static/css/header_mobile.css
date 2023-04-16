@@ -1,0 +1,206 @@
+@media (max-width: 1200px){
+    header{
+      position: fixed;
+      background: #336193;
+      height: 80px;
+      width: 100%;
+      top: 0;
+      left: 0;
+    }
+    #header-logo{
+        height: 50px;
+        width: 50px;
+    }
+    #header-name{
+        display: none;
+    }
+    /**
+      Hamburger
+    **/
+    .hamburger {
+      position: fixed;
+      top: 20px;
+      right: 5%;
+      margin-left: -2rem;
+      width: 54.39px;
+      height: 40px;
+      z-index: 5;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      position: relative;
+      width: 100%;
+      height: calc(100% / 5);
+      border-radius: 1em;
+      background-color: #689CD2;
+      transition: all 0.3s ease-in-out;
+    }
+    .bottom-bun, .meat{
+      margin-top: 8px;
+    }
+
+    /**
+    Nav Styles
+    **/
+    #main-nav-wrapper {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background-color: #336193;
+      top: -100%;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #header-right-panel{
+        position: absolute;
+        top: 0;
+        height: 95px;
+        width: 50%;
+    }
+    #username, #login-btn{
+        top: 20px;
+        height: 35px;
+        }
+        #username span{
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 16px;
+    }
+    #user-balance{
+        font-weight: 300;
+        font-size: 13px;
+        line-height: 16px;
+    }
+    #main-nav {
+      min-height: calc(100% - 20em);
+      margin-top: 95px;
+      overflow-y: scroll;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+    }
+    #main-nav::-webkit-scrollbar {
+      display: none;
+    }
+    #main-nav::-webkit-scrollbar-track {
+      display: none;
+    }
+    .submenu-nav{
+      width: fit-content;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    #toggle:not(:checked) + .hamburger + #main-nav-wrapper #main-nav .submenu-toggle.active + .submenu{
+      position: fixed;
+      top: 80px;
+      left: 0;
+      background-color: #336193;
+      transition: all 0.26s ease;
+      overflow: hidden;
+      width: 100vw;
+      padding-left: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    #toggle:checked + .hamburger + #main-nav-wrapper #main-nav .submenu{
+      background-color: #336193;
+      transition: all 0.26s ease;
+      overflow: hidden;
+      display: flex;
+      justify-content: flex-start;
+      padding-left: 1em;
+    }
+    .submenu-toggle::after{
+      font-family: 'Roboto Flex';
+      padding: 3px;
+      font-size: 10px;
+      bottom:0;
+      content: '⮝';
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+    .submenu-toggle.closed::after{
+      transform: rotate3d(1, 0, 0, 180deg);
+    }
+
+    nav a{
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+
+        color: #689CD2;
+        position: relative;
+        text-decoration: none;
+        display: inline-block;
+        padding-bottom: 10px;
+        transition: all 0.2s ease;
+        letter-spacing: 1px;
+        top:0;
+        cursor: pointer;
+    }
+    .submenu-nav a{
+        font-weight: 400;
+    }
+    nav a.active{
+      color: white;
+    }
+    nav a:before {
+      content: '';
+      height: 0;
+      position: absolute;
+      width: 5px;
+      background-color: white;
+      left: -10px;
+      transition: all 0.2s ease-in-out;
+    }
+    nav a:hover {
+      color: white;
+    }
+    nav a:not(.active):hover:before {
+      height: 100%;
+    }
+    /**
+    Animations
+    **/
+    #toggle:checked + .hamburger .top-bun {
+      transform: rotate(-45deg);
+      margin-top: 20px;
+    }
+    #toggle:checked + .hamburger .bottom-bun {
+      opacity: 0;
+      transform: rotate(45deg);
+    }
+    #toggle:checked + .hamburger .meat {
+      transform: rotate(45deg);
+      margin-top: -8px;
+    }
+    #toggle:not(:checked) + .hamburger + #main-nav-wrapper nav a.mobile-menu-link.active{
+      display: block;
+      position: fixed;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      font-size: 18px;
+      top: 30px;
+    }
+    #toggle:not(:checked) + .hamburger + #main-nav-wrapper nav a.active:not(.submenu-toggle){
+      pointer-events: none;
+    }
+    #toggle:checked + .hamburger + #main-nav-wrapper{
+      top: 0;
+    }
+}

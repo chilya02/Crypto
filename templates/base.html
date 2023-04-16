@@ -3,11 +3,13 @@
     <head>
         <link rel="stylesheet" href="/static/css/style.css">
         <link rel="stylesheet" href="/static/css/header.css">
+        <link rel="stylesheet" href="/static/css/header_mobile.css">
         <link rel="stylesheet" href="/static/css/modal.css">
         <script src="/static/js/front.js"></script>
         <script src="/static/js/modal.js"></script>
         <script src="/static/js/p2p.js"></script>
         <link rel="stylesheet" href="/static/css/p2p.css">
+        <link rel="stylesheet" href="/static/css/p2p_mobile.css">
         <link rel="stylesheet" href="/static/css/messages.css">
         <link rel="stylesheet" href="/static/css/users.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,29 +31,38 @@
             <div id="main-nav-wrapper">
                 <nav id="main-nav">
                     <a href="\courses" class="endpoint mobile-menu-link {% if section == 'courses' %}active{% endif %}">Курсы валют</a>
-                    <a id="p2p-menu-btn" data-submenu="#p2p-nav-wrapper" onclick="menuView(this)" class="submenu-toggle mobile-menu-link closed {% if section == 'p2p' %}active{% endif %}">P2P торговля</a>
+                    <a href="#" id="p2p-menu-btn" data-link="/p2p/sell" data-submenu="#p2p-nav-wrapper" onclick="menuView(this)" class="submenu-toggle mobile-menu-link closed {% if section == 'p2p' %}active{% endif %}">P2P торговля</a>
                     <div id="p2p-nav-wrapper"  style="height: 0px;" class="submenu">
                         <nav id="p2p-nav" class="submenu-nav">
-                            <a id="mobile-p2p-buy-button" {% if section == 'p2p' %} onclick="downloadContent('/api/get-sell-list/all')" {% else %} href="/p2p/sell" {% endif %} class="endpoint">Купить</a><br>
-                            <a id="mobile-p2p-sell-button" {% if section == 'p2p' %} onclick="downloadContent('/api/get-buy-list/all')" {% else %} href="/p2p/buy" {% endif %} class="endpoint">Продать</a><br>
-                            <a id="mobile-p2p-my-posts-button" {% if section == 'p2p' %} onclick="downloadContent('/api/get-posts-list/buy')" {% else %} href="/p2p/my-posts" {% endif %} class="endpoint">Мои объявления</a><br>
-                            <a id="mobile-p2p-my-orders-button"{% if section == 'p2p' %} onclick="downloadContent('/api/get-orders-list')" {% else %} href="/p2p/my-orders" {% endif %} class="endpoint">Мои ордера</a><br>
+                            <a id="mobile-p2p-buy-button" {% if section == 'p2p' %} onclick="downloadContent('/api/get-sell-list/all')" {% else %} href="/p2p/sell" {% endif %} class="endpoint">Купить</a>
+                            <a id="mobile-p2p-sell-button" {% if section == 'p2p' %} onclick="downloadContent('/api/get-buy-list/all')" {% else %} href="/p2p/buy" {% endif %} class="endpoint">Продать</a>
+                            <a id="mobile-p2p-my-posts-button" {% if section == 'p2p' %} onclick="downloadContent('/api/get-posts-list/buy')" {% else %} href="/p2p/my-posts" {% endif %} class="endpoint">Мои объявления</a>
+                            <a id="mobile-p2p-my-orders-button"{% if section == 'p2p' %} onclick="downloadContent('/api/get-orders-list')" {% else %} href="/p2p/my-orders" {% endif %} class="endpoint">Мои ордера</a>
                         </nav>
                     </div>
                     <a href="#" id="nft-menu-btn" class="submenu-toggle mobile-menu-link closed {% if section == 'nft' %}active{% endif %}" data-submenu="#nft-nav-wrapper" onclick="menuView(this)">NFT торговля</a>
                     <div id="nft-nav-wrapper" style="height: 0px;" class="submenu">
                         <nav id="nft-nav" class="submenu-nav">
-                            <a href="\p2p\buy">Маркетплейс</a><br>
-                            <a href="\p2p\buy">Коллекции</a><br>
-                            <a href="\p2p\buy">Мои NFT</a><br>
+                            <a href="\p2p\buy">Маркетплейс</a>
+                            <a href="\p2p\buy">Коллекции</a>
+                            <a href="\p2p\buy">Мои NFT</a>
                         </nav>
                     </div>
                 </nav>
+                <div id="header-right-panel">
+                {% if user.is_authenticated %}
+                    <a id="username" href="/users/lk">
+                        <span>{{ user.username }}</span>
+                    </a>
+                <span id="user-balance">
+                    {{ user.balance }}
+                </span>
+                {% else %}
+                    <a id="login-btn" href="/users/auth">
+                            <span>Войти</span>
+                    </a>
+                {% endif %}
             </div>
-            <div id="header-right-panel">
-                <div id="header-login-button">
-                    <span>Войти</span>
-                </div>
             </div>
         </header>
         <div id="main" style="z-index: -10;">

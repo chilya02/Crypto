@@ -116,6 +116,9 @@ function checkElement(selector, element, point=false){
 
 
 function menuView(el){
+    if (document.documentElement.clientWidth >= 1200){
+        window.location.replace(el.dataset.link)
+    }
     let elBlock = document.querySelector(el.dataset.submenu);
     if (elBlock.style.height != "0px"){
         closeMenu(el);
