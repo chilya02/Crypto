@@ -87,56 +87,7 @@ body {
   }
 
 
-  @media (max-width:1200px){
-  body{
-    margin-top:80px;
-  }
-    #main{
-      width: 95%;
-      padding: 2.5%;
-      padding-top: 40px;
-    }#p2p-menu{
-      display: none;
-    }
-    #p2p-content{
-      padding: 0;
-    }
-    .th{
-        height: 40px;
-    }
-    .th .tc{
-        font-size: 12px;
-    }
-    .tc {
-        font-size: 12px;
-    }
-    .tc.big{
-        font-size: 16px;
-    }
-    .tr{
-        height: 45px;
-    }
-    .tc span{
-        line-height: 100%;
-    }
-  }
-  @media (max-width: 500px){
 
-    .tc{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 33%;
-    }
-    .tc-left::after{
-      content: "/";
-    }
-    .tc-left, .tc-right{
-      width: 100%;
-      height: 50%;
-    
-    }
-  }
 .tr.my{
   background-color: #FFA273;
 }
