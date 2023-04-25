@@ -166,7 +166,6 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 340px;
     max-height: calc(100vh - 214px);
     overflow-y: scroll;
 }
