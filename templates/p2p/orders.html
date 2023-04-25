@@ -1,2 +1,12 @@
-{% if  %}
-{% endif %}
+{% with link='/api/get-new-order-info/', orders=waiting_user_approve_orders %}
+    {% include 'p2p/orders_table.html' %}
+{% endwith %}
+{% with link='/api/get-new-order-info/', orders=waiting_user_approve_orders %}
+    {% include 'p2p/orders_table.html' %}
+{% endwith %}
+{% with link='/api/get-new-order-info/', orders=waiting_user_approve_orders %}
+    {% include 'p2p/orders_table.html' %}
+{% endwith %}
+{% with link='/api/get-new-order-info/', orders=waiting_user_approve_orders %}
+    {% include 'p2p/orders_table.html' %}
+{% endwith %}
