@@ -39,6 +39,7 @@
                             <a id="mobile-p2p-sell-button" {% if section == 'p2p' %} onclick="downloadContent('/api/get-buy-list/all')" {% else %} href="/p2p/buy" {% endif %} class="endpoint">Продать</a>
                             <a id="mobile-p2p-my-posts-button" {% if section == 'p2p' %} onclick="downloadContent('/api/get-posts-list/buy')" {% else %} href="/p2p/my-posts" {% endif %} class="endpoint">Мои объявления</a>
                             <a id="mobile-p2p-my-orders-button"{% if section == 'p2p' %} onclick="downloadContent('/api/get-orders-list')" {% else %} href="/p2p/my-orders" {% endif %} class="endpoint">Мои ордера</a>
+                            {% if section == 'p2p' %} <a onclick="" data-modal="add-post-modal"> + Создать объявление</a>{% endif %}
                         </nav>
                     </div>
                     <a href="#" id="nft-menu-btn" class="submenu-toggle mobile-menu-link closed {% if section == 'nft' %}active{% endif %}" data-submenu="#nft-nav-wrapper" onclick="menuView(this)">NFT торговля</a>

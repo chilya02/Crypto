@@ -6,7 +6,7 @@ from authentication.utils import is_auth
 def buy(request):
     return render(
         request=request,
-        template_name='p2p/buy.html',
+        template_name='p2p/loaders/buy.html',
         context={'section': 'p2p'}
     )
 
@@ -15,7 +15,7 @@ def buy(request):
 def buy_post(request, post_id: int):
     return render(
         request=request,
-        template_name='p2p/post_buy_info.html',
+        template_name='p2p/loaders/post_buy_info.html',
         context={'section': 'p2p', 'id': post_id}
     )
 
@@ -24,7 +24,7 @@ def buy_post(request, post_id: int):
 def sell(request):
     return render(
         request=request,
-        template_name='p2p/sell.html',
+        template_name='p2p/loaders/sell.html',
         context={'section': 'p2p'}
     )
 
@@ -33,7 +33,7 @@ def sell(request):
 def sell_post(request, post_id: int):
     return render(
         request=request,
-        template_name='p2p/post_sell_info.html',
+        template_name='p2p/loaders/post_sell_info.html',
         context={'section': 'p2p', 'id': post_id}
     )
 
@@ -42,7 +42,7 @@ def sell_post(request, post_id: int):
 def my_posts(request):
     return render(
         request=request,
-        template_name='p2p/my_posts.html',
+        template_name='p2p/loaders/my_posts.html',
         context={'section': 'p2p'}
     )
 
@@ -51,7 +51,7 @@ def my_posts(request):
 def my_post(request, section: str, post_id: int):
     return render(
         request=request,
-        template_name='p2p/my_post_info.html',
+        template_name='p2p/loaders/my_post_info.html',
         context={
             'section': 'p2p', 
             'id': post_id,
@@ -64,7 +64,7 @@ def my_post(request, section: str, post_id: int):
 def my_orders(request):
     return render(
         request=request,
-        template_name='p2p/my_orders.html',
+        template_name='p2p/loaders/my_orders.html',
         context={'section': 'p2p'}
     )
 
@@ -73,7 +73,7 @@ def my_orders(request):
 def my_order(request, order_id):
     return render(
         request=request,
-        template_name='p2p/my_order_info.html',
+        template_name='p2p/loaders/my_order_info.html',
         context={'section': 'p2p', 'id': order_id}
     )
 
@@ -82,6 +82,6 @@ def my_order(request, order_id):
 def my_new_order(request, order_id):
     return render(
         request=request,
-        template_name='p2p/my_new_order_info.html',
+        template_name='p2p/loaders/my_new_order_info.html',
         context={'section': 'p2p', 'id': order_id}
     )

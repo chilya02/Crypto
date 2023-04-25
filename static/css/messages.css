@@ -17,7 +17,7 @@
     width: 100%;
     background: #689CD2;
     border-radius: 30px 30px 0px 0px;
-    font-family: 'Roboto Flex';
+    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -103,7 +103,7 @@
     border-radius: 4px;
 }
 .message{
-    font-family: 'Roboto Flex';
+    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;

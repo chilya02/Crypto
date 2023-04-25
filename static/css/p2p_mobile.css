@@ -1,4 +1,5 @@
 @media (max-width: 1200px){
+
     #p2p-menu{
       display: none;
     }
@@ -19,5 +20,9 @@
         width: 30%;
         max-width: 200px;
         min-width: 150px;
+    }
+    #add-post-modal{
+        max-width: 300px;
+        min-width: 300px;
     }
 }

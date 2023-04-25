@@ -43,7 +43,10 @@ def get_buy_list_html(section: str, user: User) -> str:
         template_name='p2p/posts_table.html', 
         context={'section': 'buy', 'posts': posts, 'user': user}
     )
-    return result_html
+    return render_to_string(
+        template_name='p2p/posts.html',
+        context={'section': 'buy', 'posts': posts, 'user': user}
+    )
 
 
 def get_user_posts_list_html(user: User, section: str) -> str:

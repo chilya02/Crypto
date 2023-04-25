@@ -1,0 +1,8 @@
+<div id="post-menu" class="top-menu">
+    <div class="top-menu-btn {% if section == 'buy' %}active{% endif %}" onclick="downloadContent('/api/get-posts-list/buy', false, null, true)">
+        <span>Покупка</span>
+    </div>
+    <div class="top-menu-btn {% if section == 'sell' %}active{% endif %}" onclick="downloadContent('/api/get-posts-list/sell', false, null, true)">
+        <span>Продажа</span>
+    </div>
+</div>
