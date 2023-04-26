@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'api',
     'p2p',
     'authentication',
+    'nft',
 ]
 
 MIDDLEWARE = [
