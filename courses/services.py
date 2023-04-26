@@ -4,7 +4,19 @@ import re
 
 def get_courses_from_api() -> dict:
     client = Spot()
-    response = client.ticker_24hr(symbol=None, symbols=["USDTRUB", "BTCRUB", "ETHRUB", "SOLRUB", "BTCUSDT", "ETHUSDT", "SOLUSDT"], type="FULL")
+    response = client.ticker_24hr(
+        symbol=None,
+        symbols=[
+            "USDTRUB",
+            "BTCRUB",
+            "ETHRUB",
+            "SOLRUB",
+            "BTCUSDT",
+            "ETHUSDT",
+            "SOLUSDT"
+        ],
+        type="FULL"
+    )
     data = {
         'USDT': {'USDT': 1},
         'BTC': {},
