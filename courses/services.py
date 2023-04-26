@@ -1,5 +1,7 @@
 from binance.spot import Spot
 import re
+
+
 def get_courses_from_api() -> dict:
     client = Spot()
     response = client.ticker_24hr(symbol=None, symbols=["USDTRUB", "BTCRUB", "ETHRUB", "SOLRUB", "BTCUSDT", "ETHUSDT", "SOLUSDT"], type="FULL")
