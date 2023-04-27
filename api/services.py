@@ -229,7 +229,6 @@ def get_orders_list_html(user: User) -> str:
         buy_orders=buy_orders, 
         user=user,
     )
-    
 
     return result_html
 

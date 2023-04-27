@@ -19,6 +19,7 @@ import api.urls
 import authentication.urls
 import courses.urls
 import p2p.urls
+import nft.urls
 
 
 urlpatterns = [
@@ -28,4 +29,5 @@ urlpatterns = [
     path('courses/', include(courses.urls)),
     path('p2p/', include(p2p.urls)),
     path('users/', include(authentication.urls)),
+    path('nft/', include(nft.urls))
 ]
