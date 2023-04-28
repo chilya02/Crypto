@@ -39,10 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'courses',
+    'courses_api',
     'api',
     'p2p',
+    'p2p_api',
     'authentication',
     'nft',
+    'nft_api',
 ]
 
 MIDDLEWARE = [

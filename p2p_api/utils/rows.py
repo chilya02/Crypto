@@ -2,59 +2,6 @@ from authentication.models import User
 from p2p.models import Post, BuyPost, NewOrder, Order
 from courses.models import Course
 
-def generate_post_row(post: Post, user: User) -> dict:
-    if post.user == user:
-        common_class = 'my'
-        arg = f''' downloadContent('/api/get-post-info/{"buy" if isinstance(post, BuyPost) else "sell"}/{post.id}')'''
-    else:
-        common_class = ''
-        arg = f''' downloadContent('/api/get-{"buy" if isinstance(post, BuyPost) else "sell"}-info/{post.id}')'''
-    row = {'items': [
-        {
-            'class': f'{common_class} la',
-            'text': f'<div class="with-info"><span>{post.user.username}</span><span class="info">{post.currency}</span></div>'
-        },
-        {
-            'class': f'{common_class}',
-            'text': f'{post.price}'
-        },
-        {
-            'class': f'{common_class}',
-            'text': f'{post.limit}'
-        },
-        {
-            'class': f'{common_class} la',
-            'text': f'{post.get_bank_display()}'
-        }],
-        'arg': arg
-    }
-    return row
-
-
-def generate_user_post_row(post: Post) -> dict:
-    row = {'items':
-        [
-            {
-                'class': 'la',
-                'text': f'{post.currency}'
-            },
-            {
-                'class': '',
-                'text': f'{post.price}'
-            },
-            {
-                'class': '',
-                'text': f'{post.limit}'
-            },
-            {
-                'class': 'la',
-                'text': f'{post.get_bank_display()}'
-            },
-        ],
-        'arg': f'''downloadContent('/api/get-post-info/{"buy" if isinstance(post, BuyPost) else "sell"}/{post.id}')'''
-    }
-    return row
-
 
 def get_discussing_order_row(order: NewOrder) -> dict:
     post_type = order.post_type
@@ -136,40 +83,5 @@ def get_order_row(order: Order, user: User) -> dict:
             'text': f'{action}'
         }],
         'arg': "downloadContent('/api/get-order-info/{}".format(order.id)
-    }
-    return row
-
-
-def generate_currency_row(course: Course) -> dict:
-    row = {'items': [
-        {
-            'class': 'f' 'la',
-            'text': course.currency
-        },
-        {
-            'class': '',
-            'text': course.RUB
-        },
-        {
-            'class': '',
-            'text': course.change
-        },
-        {
-            'class': '',
-            'text': course.volume
-        },
-        {
-            'class': '',
-            'text': course.quote_volume
-        },
-        {
-            'class': '',
-            'text': f'''<button class="blue-btn" onclick="window.location.replace('/p2p/sell')">Купить</button>'''
-        },
-        {
-            'class': '',
-            'text': f'''<button class="blue-btn" onclick="window.location.replace('/p2p/sell')">Продать</button>'''
-        }],
-        'arg': ''
     }
     return row

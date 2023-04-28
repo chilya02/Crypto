@@ -1,8 +1,8 @@
 <div id="cur-menu" class="top-menu">
-    <div class="top-menu-btn {% if section == 'all' %}active {% endif %}" onclick="downloadContent('/api/get-{{ p2p_section }}-list/all')">
+    <div class="top-menu-btn {% if section == 'all' %}active {% endif %}" onclick="downloadContent('/p2p/api/get-{{ p2p_section }}-list/all')">
     <span>Все</span></div>
     {% for cur in currencies %}
-    <div class="top-menu-btn {% if cur == section %} active {% endif %}" onclick="downloadContent('/api/get-{{ p2p_section }}-list/{{ cur }}', false, null, true)">
+    <div class="top-menu-btn {% if cur == section %} active {% endif %}" onclick="downloadContent('/p2p/api/get-{{ p2p_section }}-list/{{ cur }}', false, null, true)">
         <span>{{ cur }}</span>
     </div>
     {% endfor %}
