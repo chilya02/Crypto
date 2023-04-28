@@ -83,8 +83,8 @@ function getCookie(name) {
 
 
 async function downloadP2p(section, currency){
-    await downloadContent('/api/get-p2p-interface'); 
-    downloadContent(`/api/get-${section}-list/${currency}`, false, null, true)
+    await downloadContent('/p2p/api/get-p2p-interface');
+    downloadContent(`/p2p/api/get-${section}-list/${currency}`, false, null, true)
 }
 
 async function getBalance(){

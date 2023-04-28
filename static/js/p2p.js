@@ -36,7 +36,7 @@ async function sendCount(id){
         count: count.value
     }
     let rawResponse = await fetch(
-        `/api/change-order-count/${id}`,{
+        `/p2p/api/change-order-count/${id}`,{
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -91,7 +91,7 @@ async function getLimit(){
         if (currency) limit.classList.remove('disabled')
         else limit.classList.add('disabled')
     } else{
-        let rawResponse = await fetch(`/api/get-currency-count/${currency}`);
+        let rawResponse = await fetch(`/p2p/api/get-currency-count/${currency}`);
         let response = await rawResponse.json();
         let count = response['count']
         if (count) limit.classList.remove('disabled');
@@ -208,7 +208,7 @@ async function sendPost(){
         info['cardNumber'] = cardNumber;
     }
     let rawResponse = await fetch(
-        '/api/add-post',{
+        '/p2p/api/add-post',{
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -238,7 +238,7 @@ async function sendMessage(orderId){
     field.value = '';
     checkMessage();
     let rawResponse = await fetch(
-        '/api/send-message',{
+        '/p2p/api/send-message',{
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -274,7 +274,7 @@ async function createOrder(section, postId, with_message=false, payed=false){
         }
     }
     let rawResponse = await fetch(
-        '/api/create-order',{
+        '/p2p/api/create-order',{
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -286,12 +286,12 @@ async function createOrder(section, postId, with_message=false, payed=false){
           });
     let response = await rawResponse.json();
     if (response["success"])
-    await downloadContent(`/api/get-new-order-info/${response["id"]}`)
+    await downloadContent(`/p2p/api/get-new-order-info/${response["id"]}`)
     if (with_message) openMessages(true, response['id']);
 }
 
 async function loadMessages(orderId){
-    let rawResponse = await fetch(`/api/get-messages/${orderId}`);
+    let rawResponse = await fetch(`/p2p/api/get-messages/${orderId}`);
     let response = await rawResponse.json();
     let messages = document.getElementById('messages')
     messages.innerHTML = response['html'];
@@ -312,7 +312,7 @@ async function openDialog(target, orderId){
         chat.classList.remove('active')
     }
     target.classList.add('active')
-    let rawResponse = await fetch(`/api/get-messages-interface/${orderId}`);
+    let rawResponse = await fetch(`/p2p/api/get-messages-interface/${orderId}`);
     let response = await rawResponse.json();
     parentElement.innerHTML += response['html']
     setTimeout(_ =>{
@@ -324,7 +324,7 @@ async function openDialog(target, orderId){
 async function payOrder(orderId){
     let body = {id: orderId}
     let rawResponse = await fetch(
-        '/api/pay-order',{
+        '/p2p/api/pay-order',{
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -335,14 +335,14 @@ async function payOrder(orderId){
             body: JSON.stringify(body)
           });
     let response = await rawResponse.json();
-    if (response['success']) downloadContent(`/api/get-new-order-info/${orderId}`)
+    if (response['success']) downloadContent(`/p2p/api/get-new-order-info/${orderId}`)
 }
 
 async function sendCardNumber(orderId){
     let formCardNumber = document.getElementById('order-card-number').value;
     let body = {id: orderId, cardNumber: formCardNumber}
     let rawResponse = await fetch(
-        '/api/add-card-number',{
+        '/p2p/api/add-card-number',{
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -353,7 +353,7 @@ async function sendCardNumber(orderId){
             body: JSON.stringify(body)
           });
     let response = await rawResponse.json();
-    if (response['success']) downloadContent(`/api/get-new-order-info/${orderId}`)
+    if (response['success']) downloadContent(`/p2p/api/get-new-order-info/${orderId}`)
 }
 
 async function deletePost(section, postId){
@@ -362,7 +362,7 @@ async function deletePost(section, postId){
         id: postId
     }
     let rawResponse = await fetch(
-        '/api/delete-post',{
+        '/p2p/api/delete-post',{
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
@@ -373,7 +373,7 @@ async function deletePost(section, postId){
             body: JSON.stringify(body)
           });
     let response = await rawResponse.json();
-    if (response['success']) downloadContent(`/api/get-posts-list/sell`);
+    if (response['success']) downloadContent(`/p2p/api/get-posts-list/sell`);
 }
 
 async function abortOrder(orderId){
@@ -381,7 +381,7 @@ async function abortOrder(orderId){
         id: orderId
     }
     let rawResponse = await fetch(
-        '/api/abort-order',{
+        '/p2p/api/abort-order',{
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
@@ -392,13 +392,13 @@ async function abortOrder(orderId){
             body: JSON.stringify(body)
           });
     let response = await rawResponse.json();
-    if (response['success']) downloadContent(`/api/get-orders-list`)
+    if (response['success']) downloadContent(`/p2p/api/get-orders-list`)
 }
 
 async function closeOrder(orderId){
     body = {id: orderId}
     let rawResponse = await fetch(
-        '/api/close-order',{
+        '/p2p/api/close-order',{
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
@@ -409,5 +409,5 @@ async function closeOrder(orderId){
             body: JSON.stringify(body)
           });
     let response = await rawResponse.json();
-    if (response['success']) downloadContent(`/api/get-orders-list`)
+    if (response['success']) downloadContent(`/p2p/api/get-orders-list`)
 }
