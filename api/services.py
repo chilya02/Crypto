@@ -1,8 +1,3 @@
-from .utils import menu, modal, html
-from .utils.rows import generate_user_post_row, generate_post_row, generate_currency_row
-from .utils.info import get_post_info, get_post_actions
-from authentication.models import User
-from p2p.models import NewOrder, BuyPost, SellPost, Order, Message
 from courses.models import Course
 from django.template.loader import render_to_string
 

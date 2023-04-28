@@ -1,6 +1,6 @@
 {% extends 'p2p/p2p_template.html' %}
 {% block script %}
 <script>
-    window.onload = downloadContent('/api/get-sell-info/{{ id }}');
+    window.onload = downloadContent('/p2p/api/get-sell-info/{{ id }}');
 </script>
 {% endblock %}
