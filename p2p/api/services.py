@@ -1,6 +1,6 @@
-from p2p.utils import modal, html
-from p2p.utils import menu
-from p2p.utils.info import get_post_info, get_post_actions
+from .utils import modal
+from .utils import menu, html
+from .utils.info import get_post_info, get_post_actions
 from authentication.models import User
 from p2p.models import NewOrder, BuyPost, SellPost, Order, Message
 from django.template.loader import render_to_string

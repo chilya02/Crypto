@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.template.loader import render_to_string
-from p2p import services
+from . import services
 from authentication.utils import is_auth
 # Create your views here.
 import json

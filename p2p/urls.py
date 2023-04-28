@@ -1,9 +1,9 @@
 from django.urls import path, include
 from . import views
-from . import api_urls
+from .api import urls
 
 urlpatterns = [
-    path('api/', include(api_urls)),
+    path('api/', include(urls)),
     path('buy', views.buy),
     path('buy/<int:post_id>', views.buy_post),
     path('sell', views.sell),
