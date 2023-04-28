@@ -36,10 +36,10 @@
                     <a href="#" id="p2p-menu-btn" data-link="/p2p/sell" data-submenu="#p2p-nav-wrapper" onclick="menuView(this)" class="submenu-toggle mobile-menu-link closed {% if section == 'p2p' %}active{% endif %}">P2P торговля</a>
                     <div id="p2p-nav-wrapper"  style="height: 0px;" class="submenu">
                         <nav id="p2p-nav" class="submenu-nav">
-                            <a id="mobile-p2p-buy-button" {% if section == 'p2p' %} onclick="downloadContent('/api/get-sell-list/all')" {% else %} href="/p2p/sell" {% endif %} class="endpoint">Купить</a>
-                            <a id="mobile-p2p-sell-button" {% if section == 'p2p' %} onclick="downloadContent('/api/get-buy-list/all')" {% else %} href="/p2p/buy" {% endif %} class="endpoint">Продать</a>
-                            <a id="mobile-p2p-my-posts-button" {% if section == 'p2p' %} onclick="downloadContent('/api/get-posts-list/buy')" {% else %} href="/p2p/my-posts" {% endif %} class="endpoint">Мои объявления</a>
-                            <a id="mobile-p2p-my-orders-button"{% if section == 'p2p' %} onclick="downloadContent('/api/get-orders-list')" {% else %} href="/p2p/my-orders" {% endif %} class="endpoint">Мои ордера</a>
+                            <a id="mobile-p2p-buy-button" {% if section == 'p2p' %} onclick="downloadContent('/p2p/api/get-sell-list/all')" {% else %} href="/p2p/sell" {% endif %} class="endpoint">Купить</a>
+                            <a id="mobile-p2p-sell-button" {% if section == 'p2p' %} onclick="downloadContent('/p2p/api/get-buy-list/all')" {% else %} href="/p2p/buy" {% endif %} class="endpoint">Продать</a>
+                            <a id="mobile-p2p-my-posts-button" {% if section == 'p2p' %} onclick="downloadContent('/p2p/api/get-posts-list/buy')" {% else %} href="/p2p/my-posts" {% endif %} class="endpoint">Мои объявления</a>
+                            <a id="mobile-p2p-my-orders-button"{% if section == 'p2p' %} onclick="downloadContent('/p2p/api/get-orders-list')" {% else %} href="/p2p/my-orders" {% endif %} class="endpoint">Мои ордера</a>
                             {% if section == 'p2p' %} <a onclick="" data-modal="add-post-modal"> + Создать объявление</a>{% endif %}
                         </nav>
                     </div>

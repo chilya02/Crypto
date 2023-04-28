@@ -1,0 +1,20 @@
+{% extends 'modal_base.html' %}
+{% block modal_content %}
+    <h1>Оплата ордера</h1>
+    <div id="pay-info" class="modal-info">
+        <div class="order-info-row">
+            <span class="info-name">Сумма</span>
+            <span class="info-text order-sum">{{ order_sum }}</span>
+        </div>
+        <div class="order-info-row">
+            <span class="info-name">Банк</span>
+            <span class="info-text">{{ post.get_bank_display }}</span>
+        </div>
+        <div class="order-info-row"><span class="info-name">Номер карты</span>
+            <span class="info-text">{{ post.card_number }}</span>
+        </div>
+        <div class="order-info-row">
+            <button id="pay-btn" class="red-btn" data-close="" onclick="{% if new %}createOrder('sell', {{ post.id }}, false, true){% else %}payOrder({{ order_id }}){% endif %}">Я оплатил</button>
+        </div>
+    </div>
+{% endblock %}

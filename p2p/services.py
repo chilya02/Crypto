@@ -1,5 +1,6 @@
-from .utils import menu, modal, html
-from .utils.info import get_post_info, get_post_actions
+from p2p.utils import modal, html
+from p2p.utils import menu
+from p2p.utils.info import get_post_info, get_post_actions
 from authentication.models import User
 from p2p.models import NewOrder, BuyPost, SellPost, Order, Message
 from django.template.loader import render_to_string
@@ -77,6 +78,7 @@ def get_sell_post_html(post_id: int) -> str:
         post_id=post.id,
         new=True
     )
+    render_to_string('p2p/modal/pay.html', context={'post': post, 'new': True, 'order_sum': 0})
     return result_html
 
 
