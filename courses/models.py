@@ -28,7 +28,7 @@ class Course(models.Model):
                 KPFU.RUB = 4 * cls.objects.get(currency='USDT').RUB
                 KPFU.quote_volume = round(KPFU.volume * KPFU.RUB, 2)
                 KPFU.save()
-        except ConnectionError:
+        except:
             pass
 
     def __str__(self) -> str:

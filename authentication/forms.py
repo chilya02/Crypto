@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm, Password
 
 from .models import User
 
+
 class CustomUserCreationForm(UserCreationForm):
 
     password1 = forms.CharField(
@@ -45,8 +46,7 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta:
 
         model = User
-        fields = ("username","email")
-
+        fields = ("username", "email")
 
 
 class LogInForm(forms.Form):

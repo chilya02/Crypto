@@ -29,6 +29,7 @@ class SellPost(Post):
         if orders:
             return True
         return False
+
     def remove(self):
         self.user.reserve_currency(self.currency, -self.limit)
         super().remove()
@@ -107,7 +108,6 @@ class NewOrder(models.Model):
         self.post.limit -= self.count
         self.post.save()
 
-
     def get_other_side(self, user: User) -> User:
         if self.seller == user:
             return self.buyer
@@ -150,7 +150,6 @@ class Order(models.Model):
             count=order.count,
             sum=order.sum
         )
-
 
     id = models.AutoField(primary_key=True)
     price = models.IntegerField(verbose_name='Цена')

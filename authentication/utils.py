@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AnonymousUser
 from django.http import JsonResponse, HttpResponseRedirect
 
+
 def is_auth(method: str):
     def auth_decorator(function):
         def _wrapper(request, *args, **kwargs):
@@ -16,6 +17,7 @@ def is_auth(method: str):
                     return HttpResponseRedirect('/users/auth')
         return _wrapper
     return auth_decorator
+
 
 def balance(function):
     def _wrapper(request, *args, **kwargs):

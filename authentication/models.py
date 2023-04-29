@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from .managers import CustomUserManager
 from courses.models import Course
 
+
 # Create your models here.
 class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(verbose_name='Имя пользователя', max_length=20, unique=True)
@@ -38,7 +39,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
-    
 
     def reserve_currency(self, currency: str, count: int):
         count = int(count)
@@ -47,7 +47,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         reserved_balnce = getattr(self, f'{currency}_reserved')
         setattr(self, f'{currency}_reserved', reserved_balnce + count)
         self.save()
-    
 
     def reserve_payed_currency(self, currency: str, count: int):
         count = int(count)
