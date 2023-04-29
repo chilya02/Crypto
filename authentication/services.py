@@ -1,5 +1,6 @@
 from .models import User
 
+
 def get_user_data(user: User) -> list:
     currencies = ("USDT", "ETH", "BTC", "SOL", "KPFU")
     data = []
