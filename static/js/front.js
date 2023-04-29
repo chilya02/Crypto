@@ -88,7 +88,7 @@ async function downloadP2p(section, currency){
 }
 
 async function getBalance(){
-    let rawResponse = await fetch('/api/get-balance');
+    let rawResponse = await fetch('/users/api/get-balance');
     let response = await rawResponse.json();
     balance = document.getElementById("header-balance");
     if (balance) {
