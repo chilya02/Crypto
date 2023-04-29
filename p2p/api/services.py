@@ -1,5 +1,5 @@
 from .utils import modal
-from .utils import menu, html
+from .utils import html
 from .utils.info import get_post_info, get_post_actions
 from authentication.models import User
 from p2p.models import NewOrder, BuyPost, SellPost, Order, Message
@@ -46,7 +46,7 @@ def get_user_posts_list_html(user: User, section: str) -> str:
         posts = user.buy_posts.all()
     else:
         posts = user.sell_posts.all()
-    result_html = menu.get_posts_menu(section)
+    result_html = render_to_string('menu/post_menu.html', context={'section': section})
     result_html += render_to_string(
         template_name='p2p/user_posts_table.html', context={'section': section, 'posts': posts}
     )

@@ -1,6 +1,5 @@
 from authentication.models import User
-from p2p.models import Post, BuyPost, NewOrder, Order
-from courses.models import Course
+from p2p.models import NewOrder, Order
 
 
 def get_discussing_order_row(order: NewOrder) -> dict:

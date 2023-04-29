@@ -3,6 +3,7 @@ from .services import get_courses_from_api
 import datetime
 # Create your models here.
 
+
 class Course(models.Model):
     currency = models.CharField(verbose_name="Валюта", max_length=4)
     time = models.DateTimeField(verbose_name="Дата обновления")
@@ -14,20 +15,21 @@ class Course(models.Model):
 
     @classmethod
     def update_courses(cls):
-        if datetime.datetime.now(tz=datetime.timezone(datetime.timedelta(hours=4))) - Course.objects.get(currency='USDT').time > datetime.timedelta(minutes=1, seconds=1, milliseconds=1, microseconds=1):
-            data = get_courses_from_api()
-            for key, value in data.items():
-                currency = cls.objects.get(currency=key)
-                for inner_key, inneer_value in value.items():
-                    setattr(currency, inner_key, inneer_value)
-                    currency.time=datetime.datetime.now(tz=datetime.timezone(datetime.timedelta(hours=4)))
-                currency.save()
-            KPFU = cls.objects.get(currency='KPFU')
-            KPFU.RUB = 4 * cls.objects.get(currency='USDT').RUB
-            KPFU.quote_volume = round(KPFU.volume * KPFU.RUB, 2)
-            KPFU.save()
-
-
+        try:
+            if datetime.datetime.now(tz=datetime.timezone(datetime.timedelta(hours=4))) - Course.objects.get(currency='USDT').time > datetime.timedelta(minutes=1, seconds=1, milliseconds=1, microseconds=1):
+                data = get_courses_from_api()
+                for key, value in data.items():
+                    currency = cls.objects.get(currency=key)
+                    for inner_key, inner_value in value.items():
+                        setattr(currency, inner_key, inner_value)
+                        currency.time = datetime.datetime.now(tz=datetime.timezone(datetime.timedelta(hours=4)))
+                    currency.save()
+                KPFU = cls.objects.get(currency='KPFU')
+                KPFU.RUB = 4 * cls.objects.get(currency='USDT').RUB
+                KPFU.quote_volume = round(KPFU.volume * KPFU.RUB, 2)
+                KPFU.save()
+        except ConnectionError:
+            pass
 
     def __str__(self) -> str:
         return self.currency
