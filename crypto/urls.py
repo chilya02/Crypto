@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-import api.urls
 import authentication.urls
 import courses.urls
 import p2p.urls
@@ -24,7 +23,6 @@ import nft.urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(api.urls)),
     path('', include(courses.urls)),
     path('courses/', include(courses.urls)),
     path('p2p/', include(p2p.urls)),

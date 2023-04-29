@@ -4,7 +4,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('get-courses', views.get_courses),
     path('get-buy-list/<str:section>', views.get_buy_list),
     path('get-sell-list/<str:section>', views.get_sell_list),
     path('get-posts-list/<str:section>', views.get_posts_list),
