@@ -43,12 +43,12 @@
                             {% if section == 'p2p' %} <a onclick="" data-modal="add-post-modal"> + Создать объявление</a>{% endif %}
                         </nav>
                     </div>
-                    <a href="#" id="nft-menu-btn" class="submenu-toggle mobile-menu-link closed {% if section == 'nft' %}active{% endif %}" data-submenu="#nft-nav-wrapper" onclick="menuView(this)">NFT торговля</a>
+                    <a href="#" id="nft-menu-btn" data-link="/nft/marketplace"  class="submenu-toggle mobile-menu-link closed {% if section == 'nft' %}active{% endif %}" data-submenu="#nft-nav-wrapper" onclick="menuView(this)">NFT торговля</a>
                     <div id="nft-nav-wrapper" style="height: 0px;" class="submenu">
                         <nav id="nft-nav" class="submenu-nav">
-                            <a href="\p2p\buy">Маркетплейс</a>
-                            <a href="\p2p\buy">Коллекции</a>
-                            <a href="\p2p\buy">Мои NFT</a>
+                            <a href="/nft/marketplace">Маркетплейс</a>
+                            <a href="/nft/collections">Коллекции</a>
+                            <a href="/nft/my-nft">Мои NFT</a>
                         </nav>
                     </div>
                 </nav>

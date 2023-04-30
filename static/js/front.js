@@ -1,5 +1,5 @@
 function selectP2PSection(section){
-    let elements = document.querySelectorAll('.p2p-menu-row, #p2p-nav a')
+    let elements = document.querySelectorAll('.side-menu-row, #p2p-nav a')
     for (let element of elements){
         if (element.id == `p2p-${section}-button` | element.id == `mobile-p2p-${section}-button`){
             element.classList.add('active')
