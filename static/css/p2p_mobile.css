@@ -1,11 +1,4 @@
 @media (max-width: 1200px){
-
-    #p2p-menu{
-      display: none;
-    }
-    #p2p-content{
-      padding: 0;
-    }
     .top-menu-btn{
         font-weight: 400;
         font-size: 15px;

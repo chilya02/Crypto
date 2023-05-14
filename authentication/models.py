@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from .managers import CustomUserManager
 from courses.models import Course
+from common_utils import normalize_number
 
 
 # Create your models here.
@@ -64,11 +65,4 @@ class User(AbstractBaseUser, PermissionsMixin):
             count = getattr(self, currency) + getattr(self, f'{currency}_reserved')
             price = Course.objects.get(currency=currency).USDT
             _balance += count * price
-        litter = ''
-        if _balance > 1000:
-            _balance /= 1000
-            litter = 'К'
-            if _balance > 1000:
-                _balance /= 1000
-                litter = 'М'
-        return f'{round(_balance, 1)}{litter} USDT'
+        return f'{normalize_number(_balance)} USDT'

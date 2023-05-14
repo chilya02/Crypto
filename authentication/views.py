@@ -9,6 +9,7 @@ from . import services
 import json
 from .forms import CustomUserCreationForm, LogInForm
 
+
 def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
@@ -25,7 +26,8 @@ def register(request):
             request, 
             'authentication/register.html',
             context={'form': form})
-    
+
+
 def auth(request):
     if request.method == 'POST':
         form = LogInForm(request.POST)

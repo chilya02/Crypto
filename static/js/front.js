@@ -1,7 +1,7 @@
-function selectP2PSection(section){
-    let elements = document.querySelectorAll('.side-menu-row, #p2p-nav a')
+function selectMenuSection(section, menuSection){
+    let elements = document.querySelectorAll('.side-menu-row, #p2p-nav a, #nft-nav a')
     for (let element of elements){
-        if (element.id == `p2p-${section}-button` | element.id == `mobile-p2p-${section}-button`){
+        if (element.id == `${section}-${menuSection}-button` | element.id == `mobile-${section}-${menuSection}-button`){
             element.classList.add('active')
         }
         else{
@@ -31,15 +31,13 @@ function handleMessage(message, url, is_back=false, func=null, replace=false){
     }
 
     let parent;
-    switch (message['section']){
-        case 'p2p':
-            selectP2PSection(message['p2p_section']);
-            parent = document.querySelector('#p2p-content');
-            break;
-        case 'courses':
+
+        if (message['section'] == 'courses'){
             parent = document.querySelector('#main')
-            break;
-    }
+        } else{
+            selectMenuSection(message['section'], message['menu_section']);
+            parent = document.querySelector('.inner-content');
+        }
     parent.innerHTML = message['html'];
     if (message['section'] == 'p2p') addModalListeners();
 }
@@ -71,11 +69,11 @@ function getCookie(name) {
     if (document.cookie && document.cookie !== "") {
         const cookies = document.cookie.split(";");
         for (let i = 0; i < cookies.length; i++) {
-        const cookie = cookies[i].trim();
-        if (cookie.substring(0, name.length + 1) === (name + "=")) {
-            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-            break;
-        }
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + "=")) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
         }
     }
     return cookieValue;
@@ -103,6 +101,7 @@ function disableElement(element){
     element.value = ""
     element.classList.add("disabled");
     element.dispatchEvent(new Event('input'));
+    element.dispatchEvent(new Event('change'));
 }
 
 function checkElement(selector, element, point=false){

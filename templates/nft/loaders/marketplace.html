@@ -1,0 +1,6 @@
+{% extends 'nft/base.html' %}
+{% block script %}
+<script>
+    window.onload = downloadContent('/nft/api/get-marketplace-posts');
+</script>
+{% endblock %}

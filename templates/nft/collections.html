@@ -1,3 +1,31 @@
-{% extends 'base.html' %}
-{% block content %}
-{% endblock %}
+<div class="table nft-collections-table">
+    {% for collection in collections %}
+        <div class="tr tr-nft-collections">
+            <div class="nft-collection-data">
+                <div class="post-info-row">
+                    <span class="info-name">Название</span>
+                    <span class="info-text">{{ collection.name }}</span>
+                </div>
+                <div class="post-info-row">
+                    <span class="info-name">RUB</span>
+                    <span class="info-text"> {{ collection.summary_price_rub }}</span>
+                </div>
+                 <div class="post-info-row">
+                    <span class="info-name">USDT</span>
+                    <span class="info-text"> {{ collection.summary_price_usdt }}</span>
+                 </div>
+                <div class="post-info-row">
+                    <span class="info-name">Количество</span>
+                    <span class="info-text"> {{ collection.count }}</span>
+                </div>
+            </div>
+            <div class="nft-collection-images">
+                {% for img in collection.images.all %}
+                    <div class="nft-collection-image">
+                        <img src="{{ img.img.url }}">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>

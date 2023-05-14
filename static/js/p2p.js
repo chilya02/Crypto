@@ -52,7 +52,6 @@ async function sendCount(id){
 
 
 function checkValue(target, point=false){
-    console.log('value:', target.value)
     if (target.value == ''){
         return false;
     }
@@ -68,7 +67,6 @@ function checkValue(target, point=false){
     if (Number(target.value) > Number(target.max)) result = target.max;
     if (Number(target.max) == 0) {
         target.value = '';
-        console.log('here')
         return false;
     }
     if (!point)

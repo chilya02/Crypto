@@ -1,6 +1,7 @@
 @media (max-width:1200px){
   body{
     margin-top:80px;
+    height: calc(100vh  - 80px);
   }
   h1{
     font-size: 18px;
@@ -8,7 +9,9 @@
     #main{
       width: 95%;
       padding: 2.5%;
+      padding-bottom: 0;
       padding-top: 40px;
+      height: 100%;
     }
     .th{
         height: 40px;
@@ -27,6 +30,13 @@
     }
     .tc span{
         line-height: 100%;
+    }
+    .side-menu{
+      display: none;
+    }
+    .inner-content{
+      padding: 0;
+      width: 95%;
     }
   }
   @media (max-width: 500px){

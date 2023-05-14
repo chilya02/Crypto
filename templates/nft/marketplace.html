@@ -1,3 +1,20 @@
-{% extends 'nft/base.html' %}
-{% block content %}
-{% endblock %}
+<div class="table dynamic nft-table">
+    {% for post in posts %}
+        <div class="tr tr-nft" >
+            <div class="tc tc-nft tc-nft-photo">
+                <img src="{{ post.image.img.url }}">
+            </div>
+            <div class="tc tc-nft tc-nft-info">
+                <div class="nft-name">
+                    <span>{{ post.image.name }}</span>
+                </div>
+                <div class="nft-collection-name">
+                    <span>{{ post.image.collection.name }}</span>
+                </div>
+                <div class="nft-info">
+                    <span>{{ post.price }}{{ post.currency }}</span>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

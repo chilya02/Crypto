@@ -22,7 +22,7 @@ def get_buy_list(request, section: str) -> JsonResponse:
     response = {
         'url': '/p2p/buy',
         'section': 'p2p',
-        'p2p_section': 'sell',
+        'menu_section': 'sell',
         'notifications': '',
         'html': services.get_buy_list_html(section, request.user)
     }
@@ -34,7 +34,7 @@ def get_sell_list(request, section: str) -> JsonResponse:
     response = {
         'url': '/p2p/sell',
         'section': 'p2p',
-        'p2p_section': 'buy',
+        'menu_section': 'buy',
         'notifications': '',
         'html': services.get_sell_list_html(section, request.user)
     }
@@ -46,7 +46,7 @@ def get_posts_list(request, section: str) -> JsonResponse:
     response = {
         'url': '/p2p/my-posts',
         'section': 'p2p',
-        'p2p_section': 'my-posts',
+        'menu_section': 'my-posts',
         'notifications': '',
         'html': services.get_user_posts_list_html(request.user, section)
     }
@@ -58,7 +58,7 @@ def get_orders_list(request) -> JsonResponse:
     response = {
         'url': '/p2p/my-orders',
         'section': 'p2p',
-        'p2p_section': 'my-orders',
+        'menu_section': 'my-orders',
         'notifications': '',
         'html': services.get_orders_list_html(user=request.user),
     }
@@ -70,7 +70,7 @@ def get_buy_post_info(request, post_id: int) -> JsonResponse:
     response = {
         'url': f'/p2p/buy/{post_id}',
         'section': 'p2p',
-        'p2p_section': 'sell',
+        'menu_section': 'sell',
         'notifications': '',
         'html': services.get_buy_post_html(request.user, post_id),
     }
@@ -82,7 +82,7 @@ def get_sell_post_info(request, post_id: int) -> JsonResponse:
     response = {
         'url': f'/p2p/sell/{post_id}',
         'section': 'p2p',
-        'p2p_section': 'buy',
+        'menu_section': 'buy',
         'notifications': '',
         'html': services.get_sell_post_html(post_id),
     }
@@ -94,7 +94,7 @@ def get_my_post_info(request, section: str, post_id: int) -> JsonResponse:
     response = {
         'url': f'/p2p/my-posts/{section}/{post_id}',
         'section': 'p2p',
-        'p2p_section': 'my-posts',
+        'menu_section': 'my-posts',
         'notifications': '',
         'html': services.get_my_post_html(section, post_id)
     }
@@ -106,7 +106,7 @@ def get_new_order_info(request, order_id: int) -> JsonResponse:
     response = {
         'url': f'/p2p/my-orders/new/{order_id}',
         'section': 'p2p',
-        'p2p_section': 'my-orders',
+        'menu_section': 'my-orders',
         'notifications': '',
         'html': services.get_new_order_html(order_id=order_id, user=request.user),
     }

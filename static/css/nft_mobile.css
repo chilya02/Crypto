@@ -1,0 +1,20 @@
+@media (max-width: 860px){
+    .table.nft-table{
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+    .table.nft-table .tr{
+        width: 100%;
+        border:0;
+        border-bottom: 1px solid #4188D2;
+        margin: 0;
+    }
+    .tc-nft-photo{
+        height: 75%;
+        width: 100%;
+    }
+    .tc-nft-info{
+        height: 20%;
+        justify-content: space-around;
+    }
+}
