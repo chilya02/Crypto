@@ -21,8 +21,14 @@
             </div>
             <div class="nft-collection-images">
                 {% for img in collection.images.all %}
-                    <div class="nft-collection-image" onclick="downloadContent('/nft/api/nft-info/{{ img.id }}');">
-                        <img src="{{ img.img.url }}">
+                    <div class="nft-collection-image {% if img.owner == user %}my{% endif %}" onclick="downloadContent('/nft/api/nft-info/{{ img.id }}');">
+                        <div class="nft-collection-image-img">
+                            <img src="{{ img.img.url }}">
+                        </div>
+
+                             <div class="post-info-row" style="margin-bottom: 0;">
+                                <span class="info-text">{{ img.price }} {{ img.currency }}</span>
+                            </div>
                     </div>
                 {% endfor %}
             </div>

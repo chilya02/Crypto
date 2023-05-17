@@ -9,7 +9,6 @@
     position: fixed;
     right: 3vw;
     bottom: 2vh;
-    
     transition: all 100ms ease;
 }
 .message-box-interface-title{
@@ -135,4 +134,15 @@
 }
 .message-to{
     align-self: flex-start;
+}
+
+@media (max-width: 1200px) {
+    .message-interface-box{
+        width: 50vw;
+        max-width: 400px;
+        min-width: 210px;
+    }
+    #message-box{
+        min-width: 300px;
+    }
 }

@@ -196,61 +196,24 @@ def get_new_order_html(order_id: int, user: User) -> str:
 
 
 def get_orders_list_html(user: User) -> str:
-    result_html = ''
-
     waiting_user_approve_orders = user.new_sell_orders.filter(change=False, payed=True)
     waiting_user_approve_orders = get_orders_info(waiting_user_approve_orders, user)
-    # result_html += html.get_orders_html(
-    #     orders=waiting_user_approve_orders,
-    #     user=user,
-    #     title='Ожидают моего подтверждения',
-    #     func="downloadContent('/api/get-new-order-info/{}')"
-    # )
 
     waiting_user_pay_orders = user.new_buy_orders.filter(change=False, payed=False)
     waiting_user_pay_orders = get_orders_info(waiting_user_pay_orders, user)
-    # result_html += html.get_orders_html(
-    #     orders=waiting_user_pay_orders,
-    #     user=user,
-    #     title='Ожидают моей оплаты',
-    #     func="downloadContent('/api/get-new-order-info/{}')"
-    # )
 
     new_sell_orders = user.new_sell_orders.filter(change=True).exclude(sell_post__user=user)
     new_buy_orders = user.new_buy_orders.filter(change=True).exclude(buy_post__user=user)
-    # result_html += html.get_discussing_orders_html(
-    #     new_sell_orders,
-    #     new_buy_orders
-    # )
-
     discussing_orders = get_orders_info(list(new_sell_orders) + list(new_buy_orders), user)
 
     waiting_other_approve_orders = user.new_buy_orders.filter(change=False, payed=True)
-    result_html += html.get_orders_html(
-        orders=waiting_other_approve_orders,
-        user=user,
-        title='Ожидают подтверждения продавца',
-        func="downloadContent('/api/get-new-order-info/{}')"
-    )
-
     waiting_other_approve_orders = get_orders_info(waiting_other_approve_orders, user)
 
     waiting_other_pay_orders = user.new_sell_orders.filter(change=False, payed=False)
     waiting_other_pay_orders = get_orders_info(waiting_other_pay_orders, user)
-    # result_html += html.get_orders_html(
-    #     orders=waiting_other_pay_orders,
-    #     user=user,
-    #     title='Ожидают оплаты покупателя',
-    #     func="downloadContent('/api/get-new-order-info/{}')"
-    # )
 
     sell_orders = user.sell_orders.all()
     buy_orders = user.buy_orders.all()
-    # result_html += html.get_closed_orders_html(
-    #     sell_orders=sell_orders,
-    #     buy_orders=buy_orders,
-    #     user=user,
-    # )
     closed_orders = get_orders_info(list(sell_orders) + list(buy_orders), user)
 
     s = render_to_string(

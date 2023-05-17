@@ -1,0 +1,19 @@
+<div class="message-interface-box">
+    <div class="message-box-interface-title">
+        <span>Чаты</span>
+    </div>
+    <div class="message-box-interface-body">
+        <div class="message-box-content">
+            <div class="table dynamic">
+                {% for order in orders %}
+                    <div class="tr" onclick="openDialog(this, {{ order.id }})">
+                        <div class="tc la with-info" style="width:100%">
+                            <span>{{ order.client.username }}</span>
+                            <span class="info">{{ order.count }} {{ order.post.currency}}{% if order.payed %} (оплачен){% endif %}</span>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

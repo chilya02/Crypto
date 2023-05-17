@@ -40,7 +40,7 @@
             <span class="info-text">{{ balance }} {{ post.currency }}</span>
         </div>
         <div class="new-post-info-row" style="height: auto;">
-            <button id="buy-nft-btn" class="blue-btn {% if balance < post.price %}disabled{% endif %}" onclick="buyNft({{ post.id }})">Купить</button>
+            <button id="buy-nft-btn" class="blue-btn {% if balance < post.price %}disabled{% endif %}" onclick="buyNft({{ post.id }})" style="align-self: center;">Купить</button>
         </div>
     </div>
 </div>

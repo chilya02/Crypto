@@ -10,11 +10,19 @@
         margin: 0;
     }
     .tc-nft-photo{
-        height: 75%;
+        height: 80%;
         width: 100%;
     }
     .tc-nft-info{
-        height: 20%;
         justify-content: space-around;
+    }
+}
+@media (max-width: 1200px){
+    .tc-nft-photo{
+        height: 80%;
+        width: 95%;
+    }
+    .nft-collection-image-img{
+        height: 90%;
     }
 }

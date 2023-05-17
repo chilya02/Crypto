@@ -1,6 +1,6 @@
 <div class="table dynamic nft-table">
     {% for image in images %}
-        <div class="tr tr-nft" onclick="downloadContent('/nft/api/nft-info/{{ image.id }}')">
+        <div class="tr tr-nft {% if image.is_in_marketplace %}my{% endif %}" onclick="downloadContent('/nft/api/nft-info/{{ image.id }}')">
             <div class="tc tc-nft tc-nft-photo">
                 <img src="{{ image.img.url }}">
             </div>
@@ -12,7 +12,7 @@
                     <span>{{ image.collection.name }}</span>
                 </div>
                 <div class="nft-info">
-                    <span>{{ image.price }}{{ image.currency }}</span>
+                    <span>{{ image.price }} {{ image.currency }}</span>
                 </div>
             </div>
         </div>

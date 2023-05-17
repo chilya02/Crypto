@@ -96,6 +96,7 @@
     align-items: flex-start;
     max-height: calc(100vh - 214px);
     overflow-y: scroll;
+    width: 100%;
 }
 .modal-info::-webkit-scrollbar {
     width: 5px;
@@ -122,12 +123,12 @@
     padding-left: 20px;
     width: 100%;
     height: 42px;
-    font-family: 'Monts';
+    font-family: 'Montserat';
     font-style: normal;
     font-weight: 400;
     font-size: 30px;
     line-height: 30px;
-    color: #000000;
+    color: #14477D;;
 }
 #add-new-post-btn, #add-new-nft-btn, #sell-nft-btn, buy-nft-btn{
     width: 210px;
@@ -164,6 +165,12 @@ button{
     line-height: 20px;
     color: #4188D2;
     cursor: pointer;
+    transition: all 200ms ease;
+}
+.blue-btn:hover{
+    background: #4188D2;
+    color: #FFFFFF;
+    transform: scale(1.03);
 }
 .red-btn{
     background: #FFA273;

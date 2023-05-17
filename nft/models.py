@@ -62,6 +62,11 @@ class NftImage(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def is_in_marketplace(self):
+        posts = NftPost.objects.filter(image=self)
+        return True if len(posts) else False
+
 
 class NftPost(models.Model):
     image = models.ForeignKey(NftImage, verbose_name='Изображение', on_delete=models.CASCADE)

@@ -21,15 +21,16 @@
     }
     .tc {
         font-size: 12px;
+        line-height: 18px;
+    }
+    .tc.with-info {
+        line-height: 18px;
     }
     .tc.big{
         font-size: 16px;
     }
     .tr{
         height: 45px;
-    }
-    .tc span{
-        line-height: 100%;
     }
     .side-menu{
       display: none;

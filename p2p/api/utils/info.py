@@ -93,7 +93,7 @@ def get_post_actions(post: Post, count: int = 0, is_order: bool = False, change:
         if approve:
             actions[""] = {
                 'type': 'button',
-                'extra': 'data-modal="pay-modal" style="font-size:30px;"',
+                'extra': 'data-modal="pay-modal"',
                 'class': f'red-btn',
                 'content': "Подтвердить"
             }

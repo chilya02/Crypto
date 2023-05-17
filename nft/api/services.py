@@ -27,6 +27,34 @@ def marketplace_html(user: User):
     )
 
 
+def get_nft_info_html(user: User, nft_id: int):
+    image = NftImage.objects.get(pk=nft_id)
+    posts = NftPost.objects.filter(image=image)
+    can_sell = False if len(posts) else True
+    html = render_to_string(
+        template_name='nft/nft-info.html',
+        context={'image': image, 'can_sell': can_sell, 'user': user}
+    )
+    if can_sell:
+        html += render_to_string(
+            template_name='nft/modal/sell_nft.html',
+            context={'image': image, 'can_sell': can_sell}
+        )
+    return html
+
+
+def get_post_html(user: User, post_id: int):
+    post = NftPost.objects.get(pk=post_id)
+    balance = getattr(user, post.currency)
+    return render_to_string(
+        template_name='nft/nft-info.html',
+        context={'image': post.image, 'can_sell': False}
+    ) if post.image.owner == user else render_to_string(
+        template_name='nft/post_info.html',
+        context={'post': post, 'balance': balance}
+    )
+
+
 def get_collections_list(user):
     collections_list = Collection.objects.filter(changeable=True)
     result = []
@@ -41,18 +69,6 @@ def get_collections_list(user):
     return result
 
 
-def get_nft_info_html(user: User, nft_id: int):
-    image = NftImage.objects.get(pk=nft_id)
-    posts = NftPost.objects.filter(image=image)
-    can_sell = False if len(posts) else True
-    html = render_to_string(template_name='nft/nft-info.html',
-                            context={'image': image, 'can_sell': can_sell})
-    if can_sell:
-        html += render_to_string(template_name='nft/modal/sell_nft.html',
-                                 context={'image': image, 'can_sell': can_sell})
-    return html
-
-
 def select_nft_section(user: User, nft_id: int):
     image = NftImage.objects.get(pk=nft_id)
     return 'my-nft' if image.owner == user else 'collections'
@@ -61,18 +77,6 @@ def select_nft_section(user: User, nft_id: int):
 def select_post_section(user: User, post_id: int):
     post = NftPost.objects.get(pk=post_id)
     return 'my-nft' if post.image.owner == user else 'marketplace'
-
-
-def get_post_html(user: User, post_id: int):
-    post = NftPost.objects.get(pk=post_id)
-    balance = getattr(user, post.currency)
-    return render_to_string(
-        template_name='nft/nft-info.html',
-        context={'image': post.image, 'can_sell': False}
-    ) if post.image.owner == user else render_to_string(
-        template_name='nft/post_info.html',
-        context={'post': post, 'balance': balance}
-    )
 
 
 def create_nft(user: User, data: dict, file):

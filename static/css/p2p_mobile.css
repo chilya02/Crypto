@@ -20,8 +20,12 @@
         flex-direction: column;
         margin-bottom: 20px;
     }
-    .post-info-row input, .new-post-info-row input, .order-info-row input{
+    .post-info-row input, .new-post-info-row input, .order-info-row input, .post-info-row select, .new-post-info-row select, .order-info-row select{
         border-width: 1px;
+        height: 34px;
+    }
+    .new-post-info-row select{
+        height: 38px;
     }
     .info-name{
         font-size: 12px;
@@ -35,15 +39,25 @@
         flex-direction: column;
         min-width: auto;
     }
-    #post-info-data, #post-info-actions{
+    #post-info-data{
         display: flex;
         justify-content: space-between;
-        min-width: 100%;
         flex-direction: row;
-        flex-wrap: wrap;
+    }
+    #post-info-actions{
+        width: 210px;
+        width: fit-content;
     }
     #post-info-actions .post-info-row button{
-        width: 100%;
         height: 34px;
+    }
+    .modal-info{
+        width:80%;
+    }
+    #new-post-menu{
+        width: 60%;
+    }
+    .post-info-row input, .new-post-info-row input, .order-info-row input {
+        width: calc(100% - 27px);
     }
 }

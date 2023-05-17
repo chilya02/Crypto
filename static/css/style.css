@@ -19,11 +19,7 @@ h1{
     font-weight: 400;
     font-size: 30px;
     line-height: 37px;
-    /* identical to box height */
-
-
     color: #14477D;
-
 }
 #main{
     padding: 6%;
@@ -58,6 +54,9 @@ h1{
     border-bottom: 1px solid #4188D2;
     height: 60px;
     color: #000;
+  }
+  .table.dynamic .tr{
+      cursor: pointer;
   }
   .tc-left, .tc-right{
     display: flex;
@@ -98,6 +97,7 @@ h1{
   .tc.with-info{
     display: flex;
     flex-direction: column;
+    line-height: 24px;
   }
   .tc.with-info .info{
     color: #797979;
@@ -106,32 +106,19 @@ h1{
   .tc-left, .tc-right{
     width: 50%;
     height: 100%;
-  } 
-  .table.dynamic .tr:hover{
-    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.30), -2px 0px 10px rgba(0, 0, 0, 0.30);
-    transform: scale(1.01);
-    transition: all 200ms ease;
-    cursor: pointer;
   }
+@media (min-width: 1200px){
+    .table.dynamic .tr:hover{
+        box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.30), -2px 0px 10px rgba(0, 0, 0, 0.30);
+        transform: scale(1.01);
+        transition: all 200ms ease;
+    }
+}
 
 
-
-.tr.my{
+.tr.my, .nft-collection-image.my{
   background-color: rgba(255, 162, 115, 0.2);
 }
-
-/* button{
-    cursor: pointer;
-}
-button:hover{
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.30);
-    transform: scale(1.05);
-    transition: all 200ms ease;
-}
-button:not(:hover){
-    transition: all 200ms ease;
-}*/
-
 input{
     background: #FFFFFF;
     border: 3px solid #689CD2;
@@ -205,3 +192,9 @@ select{
     margin-bottom: 10px;
 }
 
+select:focus-visible{
+    outline: 0;
+}
+input:focus-visible{
+    outline: 0;
+}

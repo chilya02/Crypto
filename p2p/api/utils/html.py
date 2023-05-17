@@ -1,119 +1,5 @@
-from .rows import get_discussing_order_row, get_new_order_row, get_order_row
-from authentication.models import User
 from p2p.models import Post
-
-
-def get_discussing_orders_html(new_sell_orders, new_buy_orders) -> str:
-    html = ''
-    headers = [
-        {
-            'class': 'la',
-            'text': 'Клиент/валюта'
-        },
-        {
-            'class': '',
-            'text': 'Цена'
-        },
-        {
-            'class': '',
-            'text': 'Лимит'
-        },
-        {
-            'class': 'la',
-            'text': 'Банк'
-        },
-        {
-            'class': 'la',
-            'text': 'Тип операции'
-        },
-    ]
-    rows = []
-    for order in new_sell_orders:
-        rows.append(get_discussing_order_row(order))
-    for order in new_buy_orders:
-        rows.append(get_discussing_order_row(order))
-    if rows:
-        html += '<h1>На обсуждении</h1>'
-        html += get_table_html(headers=headers, rows=rows)
-    return html
-
-
-def get_orders_html(orders, user: User, title: str, func: str) -> str:
-    html = ''
-    headers = [
-        {
-            'class': 'la',
-            'text': 'Клиент/валюта'
-        },
-        {
-            'class': '',
-            'text': 'Цена'
-        },
-        {
-            'class': '',
-            'text': 'Количество'
-        },
-        {
-            'class': '',
-            'text': 'Сумма'
-        },
-    ]
-    rows = []
-    for order in orders:
-        rows.append(get_new_order_row(order=order, user=user, func=func))
-    if rows:
-        html += f'<h1>{title}</h1>'
-        html += get_table_html(headers=headers, rows=rows)
-    return html
-
-
-def get_closed_orders_html(sell_orders, buy_orders, user: User) -> str:
-    html = ''
-    headers = [
-        {
-            'class': 'la',
-            'text': 'Клиент/валюта'
-        },
-        {
-            'class': '',
-            'text': 'Цена'
-        },
-        {
-            'class': '',
-            'text': 'Количество'
-        },
-        {
-            'class': '',
-            'text': 'Сумма'
-        },
-        {
-            'class': 'la',
-            'text': 'Тип операции'
-        },
-    ]
-    rows = []
-    for order in sell_orders:
-        rows.append(get_order_row(order, user))
-    for order in buy_orders:
-        rows.append(get_order_row(order, user))
-    if rows:
-        html += '<h1>Закрытые ордера</h1>'
-        html += get_table_html(headers=headers, rows=rows)
-    return html
-
-
-def get_table_html(headers: list, rows: list) -> str:
-    table_html = '<table><tr class="title">'
-    for header in headers:
-        table_html += f'<th class="{header["class"]}">{header["text"]}</th>'
-    table_html += '</tr>'
-    for row in rows:
-        table_html += f"""<tr class="table-row" onclick="{row['arg']}">"""
-        for data in row['items']:
-            table_html += f'<td class="{data["class"]}">{data["text"]}</td>'
-        table_html += '</tr>'
-    table_html += '</table>'
-    return table_html
+from django.template.loader import render_to_string
 
 
 def get_chats_html(post: Post) -> str:
@@ -128,7 +14,7 @@ def get_chats_html(post: Post) -> str:
         html += '</tr>'
     html += '</table>'
     html += '</div></div></div>'
-    return html
+    return render_to_string(template_name='p2p/chats.html', context={'orders': orders})
 
 
 def get_post_info_html(info: dict) -> str:

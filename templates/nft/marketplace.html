@@ -1,6 +1,6 @@
 <div class="table dynamic nft-table">
     {% for post in posts %}
-        <div class="tr tr-nft" onclick="downloadContent('/nft/api/marketplace-post-info/{{ post.id }}')">
+        <div class="tr tr-nft {% if post.image.owner == user %}my{% endif %}" onclick="downloadContent('/nft/api/marketplace-post-info/{{ post.id }}')">
             <div class="tc tc-nft tc-nft-photo">
                 <img src="{{ post.image.img.url }}">
             </div>
