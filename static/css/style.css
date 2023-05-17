@@ -117,7 +117,7 @@ h1{
 
 
 .tr.my{
-  background-color: #FFA273;
+  background-color: rgba(255, 162, 115, 0.2);
 }
 
 /* button{
@@ -133,10 +133,13 @@ button:not(:hover){
 }*/
 
 input{
-    background: #D9D9D9;
+    background: #FFFFFF;
     border: 3px solid #689CD2;
     border-radius: 30px;
     padding-left: 20px;
+}
+select{
+    background: #FFFFFF;
 }
 .disabled{
     opacity: 30%;
@@ -157,7 +160,7 @@ input{
 }
 .side-menu .title{
     margin-top: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 19px;
     font-size: 36px;
     color: #14477D;
 }
@@ -187,20 +190,7 @@ input{
     background-color: #D9D9D9;
 }
 .side-menu #add-post-btn{
-    margin-top: 10px;
     width: 100%;
-    height: 60px;
-    background: #4188D2;
-    border-width: 0;
-    border-radius: 30px;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 23px;
-    text-align: center;
-    color: #FFFFFF;
-    cursor: pointer;
 }
 .side-menu-row svg{
     height: 15px;
@@ -211,4 +201,7 @@ input{
     padding-left: 5%;
     padding-top: 30px;
     width: 73%;
+    height: fit-content;
+    margin-bottom: 10px;
 }
+

@@ -1,9 +1,9 @@
 .message-interface-box{
     height: 55vh;
     min-height: 400px;
-    width: 25%;
-    max-width: 350px;
-    min-width: 280px;
+    width: 25vw;
+    max-width: 400px;
+    min-width: 300px;
 }
 #message-box{
     position: fixed;
@@ -29,18 +29,30 @@
 }
 #message-box-title{
     transition: all 100ms ease;
+    cursor: pointer;
 }
 #message-box-title.closed{
     height: 100%;
+    width: 100%;
     transition: all 100ms ease;
+    background-image: url('/static/img/messages.svg');
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-fill: #FFFFFF;
+    background-position: center;
+
+    right: 0;
+    border-radius: 50%;
 }
-#message-box-title:hover{
-    cursor: pointer;
+#message-box-title.closed span{
+    display: none;
 }
 #message-box.closed{
-    height: 5.5vh;
+    height: 60px;
+    width: 60px;
     transition: all 100ms ease;
     min-height: 40px;
+    min-width: auto;
 }
 .message-box-interface-body{
     height: 90%;

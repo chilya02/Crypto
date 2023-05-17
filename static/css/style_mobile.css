@@ -11,7 +11,7 @@
       padding: 2.5%;
       padding-bottom: 0;
       padding-top: 40px;
-      height: 100%;
+      height: calc(100% - 40px);
     }
     .th{
         height: 40px;

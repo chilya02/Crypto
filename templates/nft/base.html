@@ -36,7 +36,7 @@
     <div class="title">
         <span>Действия</span>
     </div>
-    <button id="add-post-btn" data-modal="add-nft-modal">+ Создать NFT</button>
+    <button id="add-post-btn" data-modal="add-nft-modal" class="red-btn">+ Создать NFT</button>
 </div>
 <div class="inner-content" id="nft-content">
 
@@ -51,17 +51,16 @@
         <div class="new-post-info-row" id="upload-container">
             <img id="upload-image" src="/static/img/upload.png">
             <div>
-                <input id="file-input" type="file" name="file" onchange="handleFiles(this.files)" accept="image/*">
+                <input id="file-input" type="file" formenctype="multipart/form-data" name="file" onchange="handleFiles(this.files)" accept="image/*">
                 <label for="file-input">Выберите файл</label>
                 <span>или перетащите его сюда</span>
             </div>
         </div>
     <div id="new-post-info" class="modal-info">
-
         <div id="nft-preview" style="width:100%; height: 200px; display: none; margin-bottom:20px;"></div>
          <div class="new-post-info-row" id="new-nft-name">
             <span class="info-name">Название</span>
-            <input class="info-text" placeholder="Название" oninput="checkElement('#new-nft-price input', this)">
+            <input class="info-text" oninput="checkElement('#new-nft-price input', this)">
         </div>
         <div class="new-post-info-row" id="new-nft-price">
             <span class="info-name">Цена</span>
@@ -80,7 +79,7 @@
         </div>
          <div class="new-post-info-row" id="new-nft-collection">
             <span class="info-name">Коллекция</span>
-            <select onfocus="loadCollections()" onchange="checkElement('#new-nft-new-collection input', this, true); console.log(this.value)" class="info-text disabled">
+            <select onfocus="loadCollections()" onchange="checkElement('#new-nft-new-collection input', this, true); checkCollection(this.value)" class="info-text disabled">
                 <option value="" selected disabled hidden></option>
                 <option value="Create-new-collection">Новая коллекция</option>
                 <option class="collection-select-name"> sdfsdf</option>
@@ -91,7 +90,7 @@
             <input class="info-text disabled" maxlength="16">
         </div>
         <div class="new-post-info-row" style="height: auto;">
-            <button id="add-new-nft-btn" class="blue-btn disabled" onclick="sendPost()">Создать NFT</button>
+            <button id="add-new-nft-btn" class="red-btn disabled" onclick="sendNewNft()">Создать NFT</button>
         </div>
     </div>
 </div>

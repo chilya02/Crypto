@@ -53,6 +53,7 @@
                             <a id="mobile-nft-marketplace-button" {% if section == 'nft' %} onclick="downloadContent('/nft/api/get-marketplace-posts')" {% else %} href="/nft/marketplace" {% endif %}>Маркетплейс</a>
                             <a id="mobile-nft-collections-button" {% if section == 'nft' %} onclick="downloadContent('/nft/api/get-collections')" {% else %} href="/nft/collections"{% endif %}>Коллекции</a>
                             <a id="mobile-nft-my-nft-button" {% if section == 'nft' %} onclick="downloadContent('/nft/api/get-user-nft')" {% else %} href="/nft/my-nft"{% endif %}>Мои NFT</a>
+                            {% if section == 'nft' %} <a onclick="" data-modal="add-nft-modal"> + Создать NFT</a>{% endif %}
                         </nav>
                     </div>
                 </nav>

@@ -21,7 +21,7 @@
             </div>
             <div class="nft-collection-images">
                 {% for img in collection.images.all %}
-                    <div class="nft-collection-image">
+                    <div class="nft-collection-image" onclick="downloadContent('/nft/api/nft-info/{{ img.id }}');">
                         <img src="{{ img.img.url }}">
                     </div>
                 {% endfor %}

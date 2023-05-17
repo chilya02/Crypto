@@ -101,6 +101,14 @@ class NewOrder(models.Model):
             return int(order_sum)
         return order_sum
 
+    @property
+    def price(self):
+        return self.post.price
+
+    @property
+    def currency(self):
+        return self.post.currency
+
     def pay(self, was_reserved: bool = False) -> None:
         self.payed = True
         self.change = False

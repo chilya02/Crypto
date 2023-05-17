@@ -1,7 +1,6 @@
 @media (max-width: 1200px){
     header{
       position: fixed;
-      background: #336193;
       height: 80px;
       width: 100%;
       top: 0;
@@ -47,7 +46,7 @@
       position: fixed;
       width: 100%;
       height: 100vh;
-      background-color: #336193;
+      background-color: #14477D;
       top: -100%;
       left: 0;
       right: 0;
@@ -107,7 +106,7 @@
       position: fixed;
       top: 80px;
       left: 0;
-      background-color: #336193;
+      background-color: #14477D;
       transition: all 0.26s ease;
       overflow: hidden;
       width: 100vw;
@@ -117,7 +116,7 @@
     }
 
     #toggle:checked + .hamburger + #main-nav-wrapper #main-nav .submenu{
-      background-color: #336193;
+      background-color: #14477D;
       transition: all 0.26s ease;
       overflow: hidden;
       display: flex;

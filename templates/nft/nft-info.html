@@ -1,0 +1,33 @@
+<div id="post-info">
+
+    <div id="post-info-data">
+        <div class="post-info-row">
+            <span class="info-name">Название</span>
+            <span class="info-text">{{ image.name }}</span>
+        </div>
+        <div class="post-info-row">
+            <span class="info-name">Коллекция</span>
+            <span class="info-text">{{ image.collection.name }}</span>
+        </div>
+         <div class="post-info-row">
+            <span class="info-name">Владелец</span>
+            <span class="info-text">{{ image.owner.username }}</span>
+        </div>
+        <div class="post-info-row">
+            <span class="info-name">Цена</span>
+            <span class="info-text">{{ image.price }} {{ image.currency }}</span>
+        </div>
+
+    </div>
+    <div id="post-info-actions" style="width: 60%;">
+        <div class="post-info-row">
+            <img style="width:100%; height:100%; max-height: 50vh; object-fit: contain;" src="{{ image.img.url }}">
+        </div>
+        {% if request.user == image.owner and can_sell %}
+       <div class="post-info-row">
+           <span class="info-name"></span>
+           <button class="info-text red-btn action" id="sell-btn" style="align-self: center;" data-modal="nft-sell-modal">Продать</button>
+       </div>
+        {% endif %}
+    </div>
+</div>

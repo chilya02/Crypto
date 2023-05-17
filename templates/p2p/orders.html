@@ -1,12 +1,36 @@
-{% with link='/api/get-new-order-info/', orders=waiting_user_approve_orders %}
-    {% include 'p2p/orders_table.html' %}
+{% with link='/p2p/api/get-new-order-info/' orders=waiting_user_approve_orders %}
+    {% if orders|length > 0 %}
+        <h1>Ожидают моего подтверждения</h1>
+        {% include 'p2p/orders_table.html' %}
+    {% endif %}
 {% endwith %}
-{% with link='/api/get-new-order-info/', orders=waiting_user_approve_orders %}
-    {% include 'p2p/orders_table.html' %}
+{% with link='/p2p/api/get-new-order-info/' orders=waiting_user_pay_orders %}
+    {% if orders|length > 0 %}
+        <h1>Ожидают моей оплаты</h1>
+        {% include 'p2p/orders_table.html' %}
+    {% endif %}
 {% endwith %}
-{% with link='/api/get-new-order-info/', orders=waiting_user_approve_orders %}
-    {% include 'p2p/orders_table.html' %}
+{% with link='/p2p/api/get-new-order-info/' orders=discussing_orders %}
+    {% if orders|length > 0 %}
+        <h1>На стадии обсуждения</h1>
+        {% include 'p2p/orders_table.html' %}
+    {% endif %}
 {% endwith %}
-{% with link='/api/get-new-order-info/', orders=waiting_user_approve_orders %}
-    {% include 'p2p/orders_table.html' %}
+{% with link='/p2p/api/get-new-order-info/' orders=waiting_other_approve_orders %}
+    {% if orders|length > 0 %}
+        <h1>Ожидают подтверждения продавца</h1>
+        {% include 'p2p/orders_table.html' %}
+    {% endif %}
+{% endwith %}
+{% with link='/p2p/api/get-new-order-info/' orders=waiting_other_pay_orders %}
+    {% if orders|length > 0 %}
+        <h1>Ожидают оплаты покупателя</h1>
+        {% include 'p2p/orders_table.html' %}
+    {% endif %}
+{% endwith %}
+{% with link='/p2p/api/get-order-info/' orders=closed_orders %}
+    {% if orders|length > 0 %}
+        <h1>Закрытые ордера</h1>
+        {% include 'p2p/orders_table.html' %}
+    {% endif %}
 {% endwith %}

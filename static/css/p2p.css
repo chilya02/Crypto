@@ -51,7 +51,7 @@
     justify-content: space-between;
 }
 .post-info-row input, .new-post-info-row input, .order-info-row input{
-    width: 100%;
+    width: calc(100% - 27px);
     height: 34px;
 }
 .card-number::-webkit-inner-spin-button {
@@ -117,7 +117,6 @@
 }
 .new-post-info-row select{
     padding: 1px;
-    background: #D9D9D9;
     border: 3px solid #689CD2;
     border-radius: 30px;
     padding-left: 20px;
@@ -130,10 +129,7 @@
     line-height: 30px;
     color: #000000;
 }
-.new-post-info-row input, .order-info-row input{
-    width: calc(100% - 27px);
-}
-#add-new-post-btn, #add-new-nft-btn{
+#add-new-post-btn, #add-new-nft-btn, #sell-nft-btn, buy-nft-btn{
     width: 210px;
     height: 60px;
     align-self: center;
@@ -161,12 +157,25 @@ button{
     text-align: center;
 }
 .blue-btn{
-    background: #4188D2;
-    font-size: 32px;
-    line-height: 38px;
-    color: #FFFFFF;
+    border: 2px solid #4188D2;
+    border-radius: 30px;
+    background: #FFFFFF;
+    font-size: 20px;
+    line-height: 20px;
+    color: #4188D2;
+    cursor: pointer;
 }
 .red-btn{
-    background: #FF5600;
+    background: #FFA273;
     color: #FFFFFF;
+    font-size: 20px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: all 200ms ease;
+    border: 2px solid #FFA273;
+}
+.red-btn:hover{
+    background: #FFFFFF;
+    color: #FFA273;
+    transform: scale(1.03);
 }

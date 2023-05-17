@@ -39,7 +39,7 @@ function handleMessage(message, url, is_back=false, func=null, replace=false){
             parent = document.querySelector('.inner-content');
         }
     parent.innerHTML = message['html'];
-    if (message['section'] == 'p2p') addModalListeners();
+    if (message['section'] == 'p2p' || message['section'] == 'nft') addModalListeners();
 }
 
 async function downloadContent(url, is_back=false, func=null, replace=false, close_menu=true){

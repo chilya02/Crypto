@@ -14,5 +14,36 @@
         max-width: 200px;
         min-width: 150px;
     }
-
+    .post-info-row, .new-post-info-row, .order-info-row{
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+    .post-info-row input, .new-post-info-row input, .order-info-row input{
+        border-width: 1px;
+    }
+    .info-name{
+        font-size: 12px;
+        line-height: 20px;
+    }
+    .info-text{
+        font-size: 16px;
+        line-height: 20px;
+    }
+    #post-info{
+        flex-direction: column;
+        min-width: auto;
+    }
+    #post-info-data, #post-info-actions{
+        display: flex;
+        justify-content: space-between;
+        min-width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    #post-info-actions .post-info-row button{
+        width: 100%;
+        height: 34px;
+    }
 }

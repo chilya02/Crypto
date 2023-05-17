@@ -1,6 +1,6 @@
 <div class="table dynamic nft-table">
     {% for image in images %}
-        <div class="tr tr-nft" >
+        <div class="tr tr-nft" onclick="downloadContent('/nft/api/nft-info/{{ image.id }}')">
             <div class="tc tc-nft tc-nft-photo">
                 <img src="{{ image.img.url }}">
             </div>

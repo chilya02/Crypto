@@ -8,6 +8,25 @@ from django.template.loader import render_to_string
 CURRENCIES = ('USDT', 'BTC', 'ETH', 'KPFU', 'SOL')
 
 
+def get_order_info(order: Order | NewOrder, user: User):
+    data_dict = {
+        'client': order.get_other_side(user).username,
+        'currency': order.currency,
+        'price': order.price,
+        'sum': order.sum,
+        'count': order.count,
+        'id': order.id
+    }
+    return data_dict
+
+
+def get_orders_info(orders, user: User):
+    data = []
+    for order in orders:
+        data.append(get_order_info(order, user))
+    return data
+
+
 def get_sell_list_html(section: str, user: User) -> str:
     result_html = render_to_string(
         template_name='menu/currency_menu.html',
@@ -180,27 +199,31 @@ def get_orders_list_html(user: User) -> str:
     result_html = ''
 
     waiting_user_approve_orders = user.new_sell_orders.filter(change=False, payed=True)
-    result_html += html.get_orders_html(
-        orders=waiting_user_approve_orders,
-        user=user,
-        title='Ожидают моего подтверждения',
-        func="downloadContent('/api/get-new-order-info/{}')"
-    )
+    waiting_user_approve_orders = get_orders_info(waiting_user_approve_orders, user)
+    # result_html += html.get_orders_html(
+    #     orders=waiting_user_approve_orders,
+    #     user=user,
+    #     title='Ожидают моего подтверждения',
+    #     func="downloadContent('/api/get-new-order-info/{}')"
+    # )
 
     waiting_user_pay_orders = user.new_buy_orders.filter(change=False, payed=False)
-    result_html += html.get_orders_html(
-        orders=waiting_user_pay_orders,
-        user=user,
-        title='Ожидают моей оплаты',
-        func="downloadContent('/api/get-new-order-info/{}')"
-    )
+    waiting_user_pay_orders = get_orders_info(waiting_user_pay_orders, user)
+    # result_html += html.get_orders_html(
+    #     orders=waiting_user_pay_orders,
+    #     user=user,
+    #     title='Ожидают моей оплаты',
+    #     func="downloadContent('/api/get-new-order-info/{}')"
+    # )
 
     new_sell_orders = user.new_sell_orders.filter(change=True).exclude(sell_post__user=user)
     new_buy_orders = user.new_buy_orders.filter(change=True).exclude(buy_post__user=user)
-    result_html += html.get_discussing_orders_html(
-        new_sell_orders,
-        new_buy_orders
-    )
+    # result_html += html.get_discussing_orders_html(
+    #     new_sell_orders,
+    #     new_buy_orders
+    # )
+
+    discussing_orders = get_orders_info(list(new_sell_orders) + list(new_buy_orders), user)
 
     waiting_other_approve_orders = user.new_buy_orders.filter(change=False, payed=True)
     result_html += html.get_orders_html(
@@ -210,23 +233,39 @@ def get_orders_list_html(user: User) -> str:
         func="downloadContent('/api/get-new-order-info/{}')"
     )
 
+    waiting_other_approve_orders = get_orders_info(waiting_other_approve_orders, user)
+
     waiting_other_pay_orders = user.new_sell_orders.filter(change=False, payed=False)
-    result_html += html.get_orders_html(
-        orders=waiting_other_pay_orders,
-        user=user,
-        title='Ожидают оплаты покупателя',
-        func="downloadContent('/api/get-new-order-info/{}')"
-    )
+    waiting_other_pay_orders = get_orders_info(waiting_other_pay_orders, user)
+    # result_html += html.get_orders_html(
+    #     orders=waiting_other_pay_orders,
+    #     user=user,
+    #     title='Ожидают оплаты покупателя',
+    #     func="downloadContent('/api/get-new-order-info/{}')"
+    # )
 
     sell_orders = user.sell_orders.all()
     buy_orders = user.buy_orders.all()
-    result_html += html.get_closed_orders_html(
-        sell_orders=sell_orders,
-        buy_orders=buy_orders,
-        user=user,
+    # result_html += html.get_closed_orders_html(
+    #     sell_orders=sell_orders,
+    #     buy_orders=buy_orders,
+    #     user=user,
+    # )
+    closed_orders = get_orders_info(list(sell_orders) + list(buy_orders), user)
+
+    s = render_to_string(
+        template_name='p2p/orders.html',
+        context={
+            'waiting_user_approve_orders': waiting_user_approve_orders,
+            'waiting_user_pay_orders':  waiting_user_pay_orders,
+            'discussing_orders':  discussing_orders,
+            'waiting_other_approve_orders': waiting_other_approve_orders,
+            'waiting_other_pay_orders': waiting_other_pay_orders,
+            'closed_orders': closed_orders,
+        }
     )
 
-    return result_html
+    return s
 
 
 def get_order_messages_html(order_id: int, user: User) -> str:

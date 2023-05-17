@@ -1,0 +1,24 @@
+<div class="dlg-modal dlg-modal-fade first-open" id="nft-sell-modal">
+ <span class="closer" data-close=""></span>
+    <h1>Продать NFT</h1>
+    <div class="modal-info">
+        <div class="new-post-info-row" id="sell-nft-price">
+            <span class="info-name">Цена</span>
+            <input class="info-text" placeholder="0" type="number" min="1" max="Infinity" oninput="checkElement('#sell-nft-currency select', this, true)">
+        </div>
+        <div class="new-post-info-row" id="sell-nft-currency">
+            <span class="info-name">Валюта</span>
+            <select class="info-text disabled" onchange="checkElement('#sell-nft-btn', this, true);">
+                <option value="" selected disabled hidden></option>
+                <option>USDT</option>
+                <option>BTC</option>
+                <option>ETH</option>
+                <option>KPFU</option>
+                <option>SOL</option>
+            </select>
+        </div>
+        <div class="new-post-info-row" style="height: auto;">
+            <button id="sell-nft-btn" class="blue-btn disabled" onclick="sendNftPost({{ image.id }})">Продать</button>
+        </div>
+    </div>
+</div>

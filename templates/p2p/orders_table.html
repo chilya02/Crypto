@@ -1,26 +1,37 @@
 <div class="table dynamic">
     <div class="th">
+        <div class="tc with-info la">
+            <span>Клиент/</span>
+            <span>валюта</span>
+        </div>
         <div class="tc">
-            <span>Клиент/валюта</span>
+           <div class="tc-left">
+                <span>Цена</span>
+            </div>
+            <div class="tc-right">
+                <span>Количество</span>
+            </div>
         </div>
         <div class="tc">
             <span>Сумма</span>
         </div>
-        <div class="tc">
-            <span>Количество</span>
-        </div>
     </div>
     {% for order in orders %}
-        <div class="tr{% if post.user == user %} my{% endif %}" onclick="downloadContent('{{ link }}/{{ order.id }}')">
-            <div class="tc with-info">
-                <span>{{ order.get_other_side(user) }}</span>
-                <span class="info">{{ order.post.currency }}</span>
+        <div class="tr" onclick="downloadContent('{{ link }}{{ order.id }}')">
+            <div class="tc with-info la">
+                <span>{{ order.client }}</span>
+                <span class="info">{{ order.currency }}</span>
+            </div>
+            <div class="tc">
+                <div class="tc-left">
+                    <span>{{ order.price }}</span>
+                </div>
+                <div class="tc-right">
+                    <span>{{ order.count }}</span>
+                </div>
             </div>
             <div class="tc">
                 <span>{{ order.sum }}</span>
-            </div>
-            <div class="tc">
-                <span>{{ order.count }}</span>
             </div>
         </div>
     {% endfor %}
