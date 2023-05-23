@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% block title %}Курсы валют{% endblock %}
 {% block script %}
 <script>
     window.onload = downloadContent('/courses/api/get-courses', false, null, false, false);
