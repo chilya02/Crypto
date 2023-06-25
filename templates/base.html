@@ -77,9 +77,15 @@
                 </nav>
                 <div id="header-right-panel">
                 {% if user.is_authenticated %}
+                    {% if lk %}
+                    <a id="login-btn" href="/users/logout">
+                        <span>Выйти</span>
+                    </a>
+                    {% else %}
                     <a id="username" href="/users/lk">
                         <span>{{ user.username }}</span>
                     </a>
+                    {% endif %}
                 <span id="user-balance">
                     {{ user.balance }}
                 </span>

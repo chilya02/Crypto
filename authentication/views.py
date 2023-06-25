@@ -53,6 +53,7 @@ def auth(request):
                 template_name="authentication/login.html",
                 context={'form': form})
 
+
 def lk(request):
     return render(
                 request=request, 
