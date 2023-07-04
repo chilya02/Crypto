@@ -5,4 +5,13 @@ function connectCourses(){
 }
 function updateCourses(data){
     console.log(data);
+    data = JSON.parse(data);
+
+    for (let element of data){
+        for (let key in element){
+        console.log(key)
+        if (key == 'currency') continue;
+            document.getElementById(`${element.currency}-${key}`).innerText = element[key];
+        }
+    }
 }
