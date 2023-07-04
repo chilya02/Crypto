@@ -1,6 +1,7 @@
 from channels.generic.websocket import WebsocketConsumer
 from pprint import pprint
 
+
 class CoursesConsumer(WebsocketConsumer):
     def connect(self):
         self.accept()

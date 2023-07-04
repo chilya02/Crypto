@@ -1,4 +1,4 @@
-from django.urls import include, path
+from django.urls import path
 from courses.api.consumers import CoursesConsumer
 
 web_sockets_urlpatterns = [
