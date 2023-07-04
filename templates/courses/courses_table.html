@@ -23,22 +23,22 @@
     {% for course in courses %}
     <div class="tr">
         <div class="tc big">
-            <span>{{ course.currency }}</span>
+            <span id="{{ course.currency }}-name">{{ course.currency }}</span>
         </div>
         <div class="tc">
             <div class="tc-left">
-                <span>{{ course.RUB }}</span>
+                <span id="{{ course.currency }}-RUB">{{ course.RUB }}</span>
             </div>
             <div class="tc-right">
-                <span style="color: {% if course.change > 0 %}#0ECB81 {% else %}#F6465D{% endif %}">{{ course.change }}</span>
+                <span style="color: {% if course.change > 0 %}#0ECB81 {% else %}#F6465D{% endif %}" id="{{ course.currency }}-change">{{ course.change }}</span>
             </div>
         </div>
         <div class="tc">
             <div class="tc-left">
-                <span>{{ course.volume }}</span>
+                <span id="{{ course.currency }}-volume">{{ course.volume }}</span>
             </div>
             <div class="tc-right">
-                <span>{{ course.quote_volume }}</span>
+                <span id="{{ course.currency }}-quote_volume">{{ course.quote_volume }}</span>
             </div>
         </div>
     </div>
