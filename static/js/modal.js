@@ -3,7 +3,6 @@ function addModalListeners() {
 	if (mOpen.length == 0) return;
 	const mClose = document.querySelectorAll('[data-close]');
 	for (let el of mOpen) {
-		console.log(el);
 		el.addEventListener('click', modalListener);
 	}
 	for (let el of mClose) {
