@@ -13,5 +13,5 @@ class CoursesConsumer(AsyncWebsocketConsumer):
     async def disconnect(self, code):
         await self.channel_layer.group_discard('courses', self.channel_name)
 
-    async def chat_message(self, event):
+    async def send_courses(self, event):
         await self.send(text_data=event["text"])

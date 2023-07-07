@@ -1,5 +1,4 @@
 from django.db import models
-from .services import get_courses_from_api
 import datetime
 # Create your models here.
 from asgiref.sync import sync_to_async
@@ -36,16 +35,4 @@ class Course(models.Model):
         return self.currency
 
 
-@sync_to_async
-def get_courses():
-    courses = Course.objects.all()
-    data = []
-    for course in courses:
-        data.append({
-            'currency': course.currency,
-            'RUB': course.RUB,
-            'change': course.change,
-            'volume': course.volume,
-            'quote_volume': course.quote_volume,
-        })
-    return data
+
