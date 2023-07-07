@@ -1,7 +1,7 @@
 from django.db import models
-from .services import get_courses_from_api
 import datetime
 # Create your models here.
+from asgiref.sync import sync_to_async
 
 
 class Course(models.Model):
@@ -33,3 +33,6 @@ class Course(models.Model):
 
     def __str__(self) -> str:
         return self.currency
+
+
+

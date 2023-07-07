@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from .managers import CustomUserManager
-from courses.models import Course
+from courses.services import Courses
 from common_utils import normalize_number
 
 
@@ -59,10 +59,10 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     @property
     def balance(self) -> str:
-        Course.update_courses()
+        courses_info = Courses.get_cached_courses()
         _balance = self.USDT + self.USDT_reserved
         for currency in ("BTC", "ETH", "KPFU", "SOL"):
             count = getattr(self, currency) + getattr(self, f'{currency}_reserved')
-            price = Course.objects.get(currency=currency).USDT
+            price = courses_info[currency]['USDT']
             _balance += count * price
         return f'{normalize_number(_balance)} USDT'

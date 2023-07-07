@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}Курсы валют{% endblock %}
+{% block include %}<script src="/static/js/courses.js"></script>{% endblock %}
 {% block script %}
 <script>
-    window.onload = downloadContent('/courses/api/get-courses', false, null, false, false);
-    window.onload = setInterval(downloadContent, 9420, '/courses/api/get-courses', false, null, false, false)
+    window.onload = function(){
+        downloadContent('/courses/api/get-courses', false, null, false, false);
+        connectCourses();
+    }
 </script>
 {% endblock %}
