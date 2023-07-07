@@ -1,7 +1,4 @@
 from channels.generic.websocket import AsyncWebsocketConsumer
-import asyncio
-from courses.models import get_courses
-import json
 
 
 class CoursesConsumer(AsyncWebsocketConsumer):
@@ -10,16 +7,11 @@ class CoursesConsumer(AsyncWebsocketConsumer):
         self.sending_task = None
 
     async def connect(self):
+        await self.channel_layer.group_add('courses', self.channel_name)
         await self.accept()
-        await self.send('123')
-        self.sending_task = await asyncio.ensure_future(self.run_periodic_task())
-
-    async def run_periodic_task(self):
-        while True:
-            data = await get_courses()
-            await self.send(json.dumps(data))
-            await asyncio.sleep(1)
 
     async def disconnect(self, code):
-        print('disconnected')
-        self.sending_task.cancel()
+        await self.channel_layer.group_discard('courses', self.channel_name)
+
+    async def chat_message(self, event):
+        await self.send(text_data=event["text"])
