@@ -5,10 +5,20 @@ function connectCourses(){
 }
 function updateCourses(data){
     data = JSON.parse(data);
-    for (let element of data){
-        for (let key in element){
-        if (key == 'currency') continue;
-            document.getElementById(`${element.currency}-${key}`).innerText = element[key];
+    console.log(data)
+    for (let element in data){
+        for (let key in data[element]){
+        console.log(`${element}-${key}`);
+        if (key == 'USDT') continue;
+        let domElement = document.getElementById(`${element}-${key}`)
+        if (key == 'change'){
+            if (data[element][key] >= 0){
+                domElement.style.color = '#0ECB81';
+            } else{
+                domElement.style.color = '#F6465D';
+            }
+        }
+            domElement.innerText = data[element][key];
         }
     }
 }

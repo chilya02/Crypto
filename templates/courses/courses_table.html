@@ -20,27 +20,112 @@
             </div>
         </div>
     </div>
-    {% for course in courses %}
     <div class="tr">
         <div class="tc big">
-            <span id="{{ course.currency }}-name">{{ course.currency }}</span>
+            <span id="USDT-name">USDT</span>
         </div>
         <div class="tc">
             <div class="tc-left">
-                <span id="{{ course.currency }}-RUB">{{ course.RUB }}</span>
+                <span id="USDT-RUB"></span>
             </div>
             <div class="tc-right">
-                <span style="color: {% if course.change > 0 %}#0ECB81 {% else %}#F6465D{% endif %}" id="{{ course.currency }}-change">{{ course.change }}</span>
+                <span style="color: #0ECB81 " id="USDT-change"></span>
             </div>
         </div>
         <div class="tc">
             <div class="tc-left">
-                <span id="{{ course.currency }}-volume">{{ course.volume }}</span>
+                <span id="USDT-volume"></span>
             </div>
             <div class="tc-right">
-                <span id="{{ course.currency }}-quote_volume">{{ course.quote_volume }}</span>
+                <span id="USDT-quote_volume"></span>
             </div>
         </div>
     </div>
-    {% endfor %}
+
+    <div class="tr">
+        <div class="tc big">
+            <span id="KPFU-name">KPFU</span>
+        </div>
+        <div class="tc">
+            <div class="tc-left">
+                <span id="KPFU-RUB"></span>
+            </div>
+            <div class="tc-right">
+                <span style="color: #F6465D" id="KPFU-change"></span>
+            </div>
+        </div>
+        <div class="tc">
+            <div class="tc-left">
+                <span id="KPFU-volume"></span>
+            </div>
+            <div class="tc-right">
+                <span id="KPFU-quote_volume"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="tr">
+        <div class="tc big">
+            <span id="SOL-name">SOL</span>
+        </div>
+        <div class="tc">
+            <div class="tc-left">
+                <span id="SOL-RUB"></span>
+            </div>
+            <div class="tc-right">
+                <span style="color: #0ECB81 " id="SOL-change"></span>
+            </div>
+        </div>
+        <div class="tc">
+            <div class="tc-left">
+                <span id="SOL-volume"></span>
+            </div>
+            <div class="tc-right">
+                <span id="SOL-quote_volume"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="tr">
+        <div class="tc big">
+            <span id="ETH-name">ETH</span>
+        </div>
+        <div class="tc">
+            <div class="tc-left">
+                <span id="ETH-RUB"></span>
+            </div>
+            <div class="tc-right">
+                <span style="color: #0ECB81 " id="ETH-change"></span>
+            </div>
+        </div>
+        <div class="tc">
+            <div class="tc-left">
+                <span id="ETH-volume"></span>
+            </div>
+            <div class="tc-right">
+                <span id="ETH-quote_volume"></span>
+            </div>
+        </div>
+    </div>
+    <div class="tr">
+        <div class="tc big">
+            <span id="BTC-name">BTC</span>
+        </div>
+        <div class="tc">
+            <div class="tc-left">
+                <span id="BTC-RUB"></span>
+            </div>
+            <div class="tc-right">
+                <span style="color: #0ECB81 " id="BTC-change"></span>
+            </div>
+        </div>
+        <div class="tc">
+            <div class="tc-left">
+                <span id="BTC-volume"></span>
+            </div>
+            <div class="tc-right">
+                <span id="BTC-quote_volume"></span>
+            </div>
+        </div>
+    </div>
 </div>
